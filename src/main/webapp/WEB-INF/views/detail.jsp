@@ -9,45 +9,43 @@
     <title>ASK</title>
     <link rel="stylesheet" href="${path}/css/header.css">
     <script src="${path}/js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
 
-<script>
-    $(document).ready(function () {
-    });
-</script>
-
-
+        });
+    </script>
 </head>
+
 <body>
-
-HELLO INTELLIJ
-HELLO GRADLE
-HELLO JSP
-HELLO WAR
-HELLO Backcoder!
-
-<form action="http://localhost:8080/writeboard/">
-    <button type="submit" class="btn btn-primary">글쓰기</button>
-</form>
-
-<c:forEach items="${all}" var="each">
-
 <table class="table">
     <thead>
     <tr>
         <th scope="col">ID</th>
         <th scope="col">Title</th>
+        <th scope="col">Content</th>
     </tr>
     </thead>
     <tbody>
-
     <tr>
-        <th>${each.id}</th>
-        <td><a href="http://localhost:8080/test/${each.id}">${each.title}</a></td>
+        <th>${findone.id}</th>
+        <td>${findone.title}</td>
+        <td>${findone.contents}</td>
     </tr>
-
     </tbody>
 </table>
-</c:forEach>
+
+<br>
+
+<form action="../delete/${findone.id}" method="get">
+    <input type="submit" value="삭제하기">
+</form>
+
+<form action="../update/${findone.id}" method="get">
+    <input type="submit" value="수정하기">
+</form>
+
+
+
 
 
 </body>
