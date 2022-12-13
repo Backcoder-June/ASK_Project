@@ -69,7 +69,6 @@ public class TestContro {
     @PostMapping("/update/{id}")
     public String updateProcess(BoardForm boardForm) {
         TestEntity testEntity = boardForm.toEntity();
-        System.out.println(testEntity);
         jpaReposit.jpaupdate(testEntity);
         return "redirect:/test";
     }
