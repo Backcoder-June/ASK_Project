@@ -80,7 +80,7 @@
         <table class="loginInfoTable">
           <tr>
             <th>아직 지구 회원이 아니신가요?</th>
-            <td><a href="register"><button class="find-idpw-button" type="button">회원가입</button></a></td>
+            <td><a href="join"><button class="find-idpw-button" type="button">회원가입</button></a></td>
           </tr>
           <tr>
             <th>아이디를 잃어버리셨나요?</th>
