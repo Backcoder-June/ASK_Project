@@ -70,30 +70,6 @@
         </tr>
 
         <tr>
-          <th rowspan="4">주소</th>
-          <td><input class="adrinput" type="text" id="sample6_postcode"
-                     placeholder="우편번호" required readonly>
-            <button class="signup-check-button" type="button"
-                    onclick="sample6_execDaumPostcode()" value="주소찾기">주소찾기</button>
-
-          </td>
-        </tr>
-        <tr>
-          <td><input class="adrinput" type="text" id="sample6_address"
-                     placeholder="주소" required readonly></td>
-        </tr>
-        <tr>
-          <td><input class="adrinput" type="text"
-                     id="sample6_detailAddress" placeholder="상세주소"></td>
-        </tr>
-        <tr>
-          <td><input class="adrinput" type="text"
-                     id="sample6_extraAddress" required name="region" placeholder="동네" readonly>
-
-          </td>
-        </tr>
-
-        <tr>
           <td colspan="2">
             <button type=submit class="signup-button" id="signup_btn"
                     name="signup_btn" onclick="check()" disabled>회원가입</button>
