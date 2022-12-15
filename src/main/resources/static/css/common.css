@@ -1,0 +1,339 @@
+.clearfix:after{
+	clear: both;
+	display: block;
+	content: '';
+}
+.fl{
+	float: left;
+}
+a{text-decoration: none;}
+a:link{text-decoration: none;}
+a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+#container{
+	margin: 0; padding: 0;
+}
+#container .inner{
+	width: 1180px; height: auto;
+	margin: 80px auto;
+}
+h1{
+	font-family: 'PreBold', sans-serif;
+	font-size: 28px;
+	margin-bottom: 20px;
+	text-align: left;
+}
+/* a.mypage{
+	position: absolute;
+	top: 20px; right: 40px;
+	display: inline-block;
+	padding: 4px 14px;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 14px;
+	color: #ffffff;
+	background: #2186db;
+	cursor: pointer;
+	border-radius: 15px;
+}
+a.mypage:hover{
+	opacity: 0.8;
+} */
+table{
+	width: 100%;
+	box-sizing: border-box;
+}
+table thead{
+	border-top: 2px solid #acacac;
+	border-bottom: 1px solid #ececec;
+}
+table tbody tr{
+	border-bottom: 1px solid #ececec;
+}
+table tbody tr:hover{
+	background: #f3f4f7;
+	cursor: pointer;
+}
+table tbody tr:hover td{
+	color: #333;
+}
+table tr{
+	height: 44px;
+}
+table tr th{
+	font-family: 'PreBold', sans-serif;
+	font-size: 16px;
+}
+table tr td{
+	font-family: 'PreLight', sans-serif;
+	font-size: 16px;
+	color: #999;
+	text-align: center;
+}
+table tbody tr.stylenone{
+	border: none;
+	margin: 0;
+	padding: 0;
+	height: 50px;
+}
+table tbody tr.stylenone td{
+	padding: 0;
+}
+a.btns{
+	display: inline-block;
+	padding: 4px 10px;
+	border: 1px solid #d7d7d7;
+	font-family: 'PreLight', sans-serif;
+	font-size: 14px;
+	color: #999;
+	float: right;
+	margin-right: 10px;
+}
+table.detail tbody tr:hover{
+	cursor: default;
+	background: none;
+}
+table.detail tbody td{
+	padding: 40px 0;
+}
+.table a.more{
+	display: block;
+	background: #2186db;
+	width: 220px; height: 50px; line-height: 50px;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	margin: 40px auto;
+}
+.table a.more:hover{
+	opacity: 0.8;
+}
+a.home{
+	display: block;
+	width: 220px; height: 50px; line-height: 50px;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 20px;
+	color: #a7a7a7;
+	text-align: center;
+	margin: 40px auto;	
+}
+.comment_box .comment_num{
+	border: 1px solid #a7a7a7;
+	display: inline-block;
+	padding: 8px 20px;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 14px;
+	margin: 10px 0;
+}
+.comment_box .like{
+	margin: 10px 0;
+	margin-left: 20px;
+}
+.comment_box .like a{
+	display: block;
+	position: relative;
+	padding: 0px 2px 0px 18px;
+	height: 34px;
+	line-height: 34px;
+	box-sizing: border-box;
+	cursor: pointer;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 14px;
+	color: #aaaaaa;
+}
+.comment_box .like a.off{
+	color: #aaaaaa;
+}
+.comment_box .like a.on{
+	color: #000000;
+}
+.comment_box .like a .heart{
+	display: block;
+	width: 10px;
+	height: 10px;
+	background: #aaaaaa;
+	position: absolute;
+	top: 50%; left: 0;
+	margin-top: -4px;
+	transform: rotate(45deg);
+	box-sizing: border-box;
+}
+.comment_box .like a .heart::before,
+.comment_box .like a .heart::after{
+	content: "";
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	border-radius: 50%;
+	background: #aaaaaa;
+}
+.comment_box .like a .heart::before{
+	left: -50%;
+}
+.comment_box .like a .heart::after{
+	top: -50%;
+}
+.comment_box .like a.off .heart{
+	background: #aaaaaa;
+}
+.comment_box .like a.off .heart::before,
+.comment_box .like a.off .heart::after{
+	background: #aaaaaa;
+}
+.comment_box .like a.on .heart{
+	background: #ea2027;
+}
+.comment_box .like a.on .heart::before,
+.comment_box .like a.on .heart::after{
+	background: #ea2027;
+}
+
+
+
+.comments{
+	padding: 0px 20px;
+	box-sizing: border-box;
+}
+.comment{
+	display: block;
+	width: 100%;
+	padding: 20px 0;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #dddddd;
+}
+.comment .profile{
+	margin-bottom: 10px;
+}
+.comment .profile span.img{
+	display: inline-block;
+	width: 20px; height: 20px;
+	border-radius: 50%;
+	background-color: #d7d7d7;
+	margin-right: 6px;
+}
+.comment .profile span.id{
+	display: inline-block;
+	height: 20px;
+	font-family: 'PreBold', sans-serif;
+	font-size: 16px;
+	color: #000;
+}
+.comment .comment_content{
+	font-size: 16px;
+	font-family: 'PreRegular', sans-serif;
+}
+.comment .comment_content em{
+	display: block;
+	font-style: normal;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 13px;
+	color: #a9a9a9;
+	margin-top: 4px;
+}
+.comment_box textarea{
+	display: block;
+	width: 1000px; height: 100px;
+	box-sizing: border-box;
+	padding: 10px;
+	resize: none;
+	outline: none;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 16px;
+	border: 1px solid #d7d7d7;
+}
+.comment_box textarea:focus{
+	border: 1px solid #2186db;
+}
+.comment_box a.write_btn{
+	display: block;
+	width: 140px; height: 100px;
+	line-height: 100px;
+	background: #333;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 18px;
+	color: #ffffff;
+	text-align: center;
+}
+
+
+
+
+
+
+
+.form_content{
+	position: absolute;
+	top: 40%; left: 50%;
+	transform: translate(-50%,-50%);
+}
+.form_content h1{
+	font-family: 'PreBold', sans-serif;
+	font-size: 28px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+form{
+	width: 500px; margin: 0 auto;
+	text-align: center;
+}
+form fieldset{
+	text-indent: -99999px;
+	font-size: 0;
+	display: none;
+}
+form input{
+	width: 350px; height: 50px;
+	border: 1px solid #d7d7d7;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+	padding: 0 20px 0 20px;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 16px;
+}
+form input:focus{
+	outline: none;
+	border: 1px solid #2186db;
+}
+form input::placeholder{
+	color: #c7c7c7;
+}
+form a{
+	display: block;
+	width: 200px; height: 30px;
+	line-height: 30px;
+	color: #aaaaaa;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 14px;
+	margin: 10px auto;
+}
+form button{
+	width: 350px; height: 50px;
+	border: none;
+	background-color: #2186db;
+	font-family: 'PreRegular', sans-serif;
+	font-size: 16px;
+	color: #ffffff;
+}
+form button:hover{
+	opacity: 0.8;
+}
+form label{
+	display: block;
+	text-align: left;
+	width: 350px;
+	margin: 0 auto 3px auto;
+	font-family: 'PreBold', sans-serif;
+	font-size: 15px;
+}
+
+.signup_wrap, .login_wrap {
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.signup_wrap h1, .login_wrap h1 {
+	text-align: center;
+}
+.signup_wrap form input{
+	margin-bottom: 20px;
+}

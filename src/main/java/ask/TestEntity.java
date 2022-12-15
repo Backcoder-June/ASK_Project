@@ -6,11 +6,8 @@ import javax.persistence.*;
 public class TestEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String title;
-
     private String contents;
-
     public TestEntity(){}
 
     public TestEntity(Long ID, String title, String contents) {
