@@ -25,4 +25,15 @@ public class MemberDTO {
     @Column(nullable = false)
     private Role role;
 
+
+    @Override
+    public String toString() {
+        return "MemberDTO{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", pw='" + pw + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }

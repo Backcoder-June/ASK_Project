@@ -6,6 +6,9 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="_csrf_parameter" content="${_csrf.parameterName}" />
+  <meta name="_csrf_header" content="${_csrf.headerName}" />
+  <meta name="_csrf" content="${_csrf.token}" />
   <title>지식을 구하다</title>
   <link rel="stylesheet" href="${path}/css/login.css">
   <link rel="stylesheet" href="${path}/css/table.css">
@@ -26,12 +29,12 @@
       <span>지구 &nbsp; 회원가입</span>
     </div>
 
-    <form name="form" action="register" method="post" class="signup-container2">
+    <form name="form" action="joinProcess" method="post" class="signup-container2">
       <table class="type09">
         <tr>
-          <th>아이디</th>
-          <td><input type="text" name="userid" id="userid"
-                     placeholder="아이디를 입력해 주세요." required>
+          <th>이메일</th>
+          <td><input type="text" name="email" id="email"
+                     placeholder="이메일을 입력해 주세요." required>
             <button class="signup-check-button" type="button" id="id-btn"
                     value="중복확인" onclick="idcheck()">중복확인</button> <span
                     id="id_check"></span></td>
@@ -50,49 +53,37 @@
         </tr>
 
         <tr>
-          <th>이름</th>
-          <td><input type=text name="name" id="name" placeholder="이름을 입력해 주세요."
+          <th>닉네임</th>
+          <td><input type=text name="nickname" id="nickname" placeholder="닉네임을 입력해 주세요."
                      required oninput="namecheck()"> <span id="name_check"></span>
           </td>
         </tr>
-        <tr>
+      <%--  <tr>
           <th>이메일</th>
           <td><input type=text name="email" id="email" placeholder="이메일을 입력해 주세요."
                      required oninput="emailcheck()"> <span id="email_check"></span>
 
           </td>
         </tr>
-        <tr>
-          <th>연락처</th>
-          <td><input type=text name="phone" id="phone"
-                     placeholder="전화번호를 (-)제외하고 입력해 주세요." required oninput="phonecheck()">
-            <span id="phone_check"></span></td>
-        </tr>
+--%>
 
         <tr>
           <td colspan="2">
             <button type=submit class="signup-button" id="signup_btn"
-                    name="signup_btn" onclick="check()" disabled>회원가입</button>
+                    name="signup_btn" <%--onclick="check()"--%> disabled>회원가입</button>
           </td>
         </tr>
       </table>
-      <!-- 동네 / 좌표 정보 추가 -->
-      <input type="hidden" id="address" name="address">
-      <input type="hidden" id="coords" name="coords">
     </form>
 
   </div>
 </div>
-
-<div class="register-map" id="map" style="width: 450px; height: 275px; right: -55%; top: -43%; border: solid 3px silver; display: none;"></div>
-
 <script>
-  let userid = $('#userid');
   let pw = $('#pw');
   let pw2 = $('#pw2');
-  let phone = $('#phone');
+  let userid = $('#userid');
   let email = $('#email');
-  let name = $('#name');
+  let nickname = $('#nickname');
   let btn = $('#signup_btn');
   let id_check = false;
   let pw_check = false;
@@ -103,19 +94,26 @@
   let address = "";
 
   function idcheck() {
-    var userid = $('#userid').val();
+    var email = $('#email').val();
 
     var regId = /^[A-Za-z0-9]{6,20}$/;
-    if (userid == '') {
+    if (email == '') {
       $('#id_check').text("아이디를 입력해주세요");
       $('#id_check').css("color", "red");
       id_check = false;
       btn.attr('disabled', true);
     } else {
+      var header = $("meta[name='_csrf_header']").attr('content');
+      var token = $("meta[name='_csrf']").attr('content');
+
       $.ajax({
         url: "idCheck",
+
+        beforeSend: function(xhr){
+          if(token && header) {
+          xhr.setRequestHeader(header, token);}},
         type: 'post',
-        data: { userid: userid },
+        data: { "email": email },
         success: function (data) {
           if (data == 'true') {
             $('#id_check').text("이미 가입된 아이디입니다");
@@ -123,7 +121,7 @@
             id_check = false;
             btn.attr('disabled', true);
           } else {
-            if (!regId.test(userid)) {
+            if (!regId.test(email)) {
               $('#id_check').text("영문과 숫자 6~20자 이내로 입력해 주세요.");
               $('#id_check').css("color", "red");
               id_check = false;
@@ -132,6 +130,7 @@
               $('#id_check').text("✅사용 가능한 아이디입니다");
               $('#id_check').css("color", "rgb(116,232,0)");
               id_check = true;
+              btn.attr('disabled', false);
               /* 	if (id_check == true && pw_check == true && pw2_check == true && phone_check == true && email_check == true && name_check == true) {
                       btn.attr('disabled', false);
                   }*/
@@ -162,6 +161,7 @@
       $('#pw_check').text("✅패스워드 사용가능");
       $('#pw_check').css("color", "rgb(116,232,0)");
       pw_check = true;
+      btn.attr('disabled', false);
       /* if (id_check == true && pw_check == true && pw2_check == true && phone_check == true && email_check == true && name_check == true) {
           btn.attr('disabled', false);
       } */
@@ -181,7 +181,7 @@
     } else if (pw2 == pw) {
       $('#pw2_check').text("✅패스워드가 일치합니다.");
       $('#pw2_check').css("color", "rgb(116,232,0)");
-
+      btn.attr('disabled', false);
       pw2_check = true;
       /* if (id_check == true && pw_check == true && pw2_check == true && phone_check == true && email_check == true && name_check == true) {
           btn.attr('disabled', false);
@@ -256,7 +256,7 @@
     }
   }
   function namecheck() {
-    var name = $('#name').val();
+    var name = $('#nickname').val();
     if (name == '') {
       $('#name_check').text("이름을 입력해 주세요.");
       $('#name_check').css("color", "red");
@@ -265,72 +265,11 @@
     } else if(name.length > 1) {
       name_check = true;
       $('#name_check').text("✅");
+      btn.attr('disabled', false);
 
     }
   }
-  function sample6_execDaumPostcode() {
-    new daum.Postcode({
-      oncomplete: function (data) {
-        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-        console.log(data)
-        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-        var addr = ''; // 주소 변수
-        var detailAddr = ''; //상세주소
-        var extraAddr = ''; // 참고항목 변수
-        var add = addr + detailAddr;
-        //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-        addr = data.roadAddress;
-        // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-          extraAddr += data.bname;
-        }
-        // 건물명이 있고, 공동주택일 경우 추가한다.
-        if (data.buildingName !== '' && data.apartment === 'Y') {
-          extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-        }
-        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-        if (extraAddr !== '') {
-          extraAddr = extraAddr;
-        }
-        // 조합된 참고항목을 해당 필드에 넣는다.
-        document.getElementById("sample6_extraAddress").value = extraAddr;
-        // 동 이름이 아닐 때, region input에 전체 주소를 넣은 후 후처리
-        if (extraAddr == ''){
-          let numIndex = '';
-          let spaceIndex = '';
-          var pattern = /\s/;
-          for(var i = 0; i < addr.length; i++){
-            if(!isNaN(addr.charAt(i)) && !addr.charAt(i).match(pattern)){
-              numIndex = i;
-              break;
-            }
-          }
 
-          for(var j = 0; j < numIndex-1; j++){
-            if(!isNaN(addr.charAt(j))){
-              spaceIndex = j;
-            }
-          }
-
-
-          document.getElementById("sample6_extraAddress").value = addr.substring(spaceIndex+1,numIndex-1);
-
-        }
-
-        // 우편번호와 주소 정보를 해당 필드에 넣는다.
-        document.getElementById('sample6_postcode').value = data.zonecode;
-        document.getElementById("sample6_address").value = addr;
-        adress = addr;
-        // 커서를 상세주소 필드로 이동한다.
-        document.getElementById("sample6_detailAddress").focus();
-        document.getElementById("sample6_detailAddress").value = detailAddr;
-        $("#address").val(addr);
-      }
-    }).open();
-  }
 
   function check(){
     if($("#address").val()==''){
