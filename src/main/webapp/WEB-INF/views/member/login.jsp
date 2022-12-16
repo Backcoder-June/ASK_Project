@@ -69,6 +69,14 @@
           <a id="kakao-login-btn" href="javascript:kakaoLogin();" >
             <img src="${path}/pictures/Kakao_logo.jpg"> 카카오 로그인
           </a>
+          <br>
+          <a href="/login/google">Google Login</a>
+          <br>
+          <a href="/login/naver">Naver Login</a>
+          <br>
+
+
+
         </div>
       </div>
 
