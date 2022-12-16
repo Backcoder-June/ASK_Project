@@ -12,6 +12,17 @@
 
 <script>
     $(document).ready(function () {
+        let sessionNickName = '${sessionScope.sessiondto.nickname}';
+        let sessionEmail = '${sessionScope.sessiondto.email}';
+        if (sessionEmail !='' && sessionNickName == '') {
+            alert("사용하실 닉네임을 등록해 주세요.");
+            location.replace("/nicknameRegister");
+        }
+        $("#userNickname").html("GUEST");
+        if(sessionNickName!=''){
+            $("#userNickname").html(sessionNickName);
+            $("#logout").html('<a href="/logout">로그아웃</a>');
+        }
     });
 </script>
 
@@ -19,12 +30,12 @@
 </head>
 <body>
 
-HELLO INTELLIJ
-HELLO GRADLE
-HELLO JSP
-HELLO WAR
-HELLO Backcoder!
+<span id="userNickname"></span> 님 환영합니다! <br>
+<br>
 
+<div id="logout"></div>
+
+<br>
 <form action="http://localhost:8080/writeboard/">
     <button type="submit" class="btn btn-primary">글쓰기</button>
 </form>

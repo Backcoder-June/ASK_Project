@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "MEMBER")
 public class MemberDTO {
 
     @Id
@@ -21,10 +22,14 @@ public class MemberDTO {
     private String pw;
     private String nickname;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
+//    @Enumerated(EnumType.STRING)
+    @Column(name ="role")
+    private String role;
 
+    /*public String setRole(Role role) {
+        return String.valueOf(role);
+    }
+*/
 
     @Override
     public String toString() {

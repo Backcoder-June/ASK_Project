@@ -14,6 +14,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+
+    @Autowired
+    CustomOAuth2UserService customOAuth2UserService;
+
+
+
   /*  @Autowired
     LoginIdPwValidator loginIdPwValidator;
 */
@@ -32,22 +38,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable(); // Spring Security - Post - 403 forbidden 방지
         http.authorizeRequests()
+                // admin 페이지는 ROLE_ADMIN 일때만 match
                 .antMatchers("/admin**/**").hasAuthority("ROLE_ADMIN")
+                // 나머지 request는 허용
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-//        	.loginProcessingUrl("/loginProcess")
-                .usernameParameter("userid")
+            //.loginProcessingUrl("/loginProcess")
+                .usernameParameter("email")
                 .passwordParameter("pw")
 //        	.permitAll()
-                .defaultSuccessUrl("/allproduct/1/1")
+                .defaultSuccessUrl("/test")
 //        	.failureHandler(AuthenticationFailureHandler)
                 .failureUrl("/logout")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login?error=1");
-
+                .logoutSuccessUrl("/login?error=1")
+                // oauth2 설정
+                .and()
+                .oauth2Login().loginPage("/login")
+                .defaultSuccessUrl("/test")
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService);
     }
 
   /*  @Override

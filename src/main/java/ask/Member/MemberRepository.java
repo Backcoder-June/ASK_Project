@@ -17,10 +17,13 @@ public interface MemberRepository extends JpaRepository<MemberDTO, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO MEMBER (email, pw, nickname) " +
-            "VALUES( :#{#MemberEntity.email}, :#{#MemberEntity.pw}, :#{#MemberEntity.nickname})", nativeQuery = true)
+    @Query(value = "INSERT INTO MEMBER (email, pw, nickname, role) " +
+            "VALUES( :#{#MemberEntity.email}, :#{#MemberEntity.pw}, :#{#MemberEntity.nickname}, :#{#MemberEntity.role})", nativeQuery = true)
     void registerMember(@Param("MemberEntity") MemberDTO memberDTO);
 
 
-
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE MEMBER SET nickname = :#{#nickname} WHERE id = :#{#id}", nativeQuery = true)
+    void setNickname(@Param("nickname") String nickname, @Param("id") Long id);
 }
