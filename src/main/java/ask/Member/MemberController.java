@@ -1,6 +1,7 @@
 package ask.Member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,10 @@ import java.util.Optional;
 
 @Controller
 public class MemberController {
+
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     MemberRepository memberRepository;
@@ -38,6 +43,11 @@ public class MemberController {
         return "member/accessDenied";
     }
 
+    @GetMapping("/loginFail")
+    public String loginFail() {
+        return "member/loginFail";
+    }
+
 
     @GetMapping("/join")
     public String joinPage() {
@@ -48,6 +58,9 @@ public class MemberController {
     @PostMapping("/joinProcess")
     public String joinProcess(MemberDTO memberDTO) throws Exception {
         System.out.println(memberDTO);
+        // PW 암호화
+        memberDTO.setPw(bCryptPasswordEncoder.encode(memberDTO.getPw()));
+
         memberRepository.registerMember(memberDTO);
         return "redirect:/login";
     }

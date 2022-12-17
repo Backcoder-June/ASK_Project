@@ -67,7 +67,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         } else {
             memberDTO = new MemberDTO();
             memberDTO.setEmail(email);
-            memberDTO.setRole("ROLE_USER");
+            memberDTO.setRole("USER");
             System.out.println("오스 서비스에서 회원가입 실행");
             memberRepository.registerMember(memberDTO);
         }

@@ -14,59 +14,64 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
-
     @Autowired
     CustomOAuth2UserService customOAuth2UserService;
 
+    @Autowired
+    CustomUserDetailService customUserDetailService;
 
-
-  /*  @Autowired
-    LoginIdPwValidator loginIdPwValidator;
-*/
-    @Bean
+   /* @Bean
     public PasswordEncoder encoderPassword() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
-
-    /*@Bean
-    public BCryptPasswordEncoder encodePwd() {
-        return new BCryptPasswordEncoder();
     }*/
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable(); // Spring Security - Post - 403 forbidden 방지
-        http.authorizeRequests()
+        http
+            .authorizeRequests()
                 // admin 페이지는 ROLE_ADMIN 일때만 match
                 .antMatchers("/admin**/**").hasAuthority("ROLE_ADMIN")
-                // 나머지 request는 허용
+                // 나머지 request는 허용 // .authenticated() 로 주면 로그인 했을시 허용  // authorization : 권한처리
                 .anyRequest().permitAll()
                 .and()
-                .formLogin()
+
+        // 로그인페이지 설정
+            .formLogin()
                 .loginPage("/login")
-            //.loginProcessingUrl("/loginProcess")
+                .permitAll() // 로그인 페이지 접근 허용
+                //.loginProcessingUrl("/loginProcess")
                 .usernameParameter("email")
                 .passwordParameter("pw")
-//        	.permitAll()
+                .loginProcessingUrl("/loginProcess")
                 .defaultSuccessUrl("/test")
-//        	.failureHandler(AuthenticationFailureHandler)
-                .failureUrl("/logout")
+                //.failureHandler(AuthenticationFailureHandler)
+                .failureUrl("/loginFail")
                 .and()
-                .logout()
-                .logoutSuccessUrl("/login?error=1")
-                // oauth2 설정
+
+            // 로그아웃
+            .logout()
+                .logoutSuccessUrl("/login")
                 .and()
-                .oauth2Login().loginPage("/login")
+
+            // oauth2 설정
+            .oauth2Login()
+                .loginPage("/login")
                 .defaultSuccessUrl("/test")
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService);
     }
 
-  /*  @Override
+    @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(loginIdPwValidator);
-    }*/
+        auth.userDetailsService(customUserDetailService);
+    }
 
 
 
