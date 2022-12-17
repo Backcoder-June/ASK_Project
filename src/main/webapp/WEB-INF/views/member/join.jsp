@@ -75,7 +75,7 @@
         </tr>
       </table>
 
-      <input type="hidden" name="role" value="ROLE_USER">
+      <input type="hidden" name="role" value="USER">
     </form>
 
   </div>

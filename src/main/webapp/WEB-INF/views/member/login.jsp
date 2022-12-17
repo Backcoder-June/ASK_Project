@@ -54,8 +54,8 @@
 
     <div class="login-box">
       <div class="loginTitle">로그인</div>
-      <form class="login-box-form" action="login" method="post">
-        <input class="login-input rememeber-login-id" type="text" name="userid" id="userid" autocomplete="off" placeholder="ID"><br>
+      <form class="login-box-form" action="loginProcess" method="post">
+        <input class="login-input rememeber-login-id" type="text" name="email" id="email" autocomplete="off" placeholder="ID"><br>
         <input class="login-input" type="password" name="pw" id="pw" autocomplete="off" placeholder="PASSWORD"><br>
         <div class="id-check-box"><input class="remember-id mb-2" type="checkbox"><span>아이디 기억하기</span>
         </div>
