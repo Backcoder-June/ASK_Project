@@ -53,7 +53,7 @@
 
     <tr>
         <th>${each.id}</th>
-        <td><a href="http://localhost:8080/test/${each.id}">${each.title}</a></td>
+        <td><a href="http://localhost:8080/oneboard/${each.id}">${each.title}</a></td>
     </tr>
 
     </tbody>

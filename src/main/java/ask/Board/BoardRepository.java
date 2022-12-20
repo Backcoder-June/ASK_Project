@@ -1,4 +1,4 @@
-package ask;
+package ask.Board;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -8,18 +8,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface JpaReposit extends JpaRepository<TestEntity, Long> {
+public interface BoardRepository extends JpaRepository<BoardDTO, Long> {
 
-    @Query(value = "SELECT * FROM test_entity", nativeQuery = true)
-    List<TestEntity> jpafindAll();
+    @Query(value = "SELECT * FROM BOARD", nativeQuery = true)
+    List<BoardDTO> jpafindAll();
 
-    @Query(value = "SELECT * FROM test_entity WHERE id= :id", nativeQuery = true)
-    TestEntity jpafindOne(Long id);
+    @Query(value = "SELECT * FROM BOARD WHERE id= :id", nativeQuery = true)
+    BoardDTO jpafindOne(Long id);
 
-    @Query(value = "UPDATE test_entity SET title= :#{#target.title}, contents= :#{#target.contents} WHERE id= :#{#target.id}", nativeQuery = true)
+    @Query(value = "UPDATE BOARD SET title= :#{#target.title}, contents= :#{#target.contents} WHERE id= :#{#target.id}", nativeQuery = true)
     @Modifying
     @Transactional
-    void jpaupdate(@Param("target")TestEntity testEntity);
+    void jpaupdate(@Param("target") BoardDTO boardDTO);
 
 
     /*@Query(value = "SELECT * FROM comment WHERE nickname = :nickname", nativeQuery = true)
