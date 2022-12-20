@@ -22,7 +22,7 @@
         <a href="http://localhost:8080/test/"> 게시판 보기 </a>
     </h1>
 </div>
-<form class="container" action="/update/{id}" method="post" >
+<form class="container" action="/updateboard/{id}" method="post" >
     <div class="mb-3 mt-3 form-group">
         <label class="form-label">제목</label>
         <input type="text" class="form-control" name="title" value="${update.title}">

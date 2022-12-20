@@ -36,11 +36,11 @@
 
 <br>
 
-<form action="../delete/${findone.id}" method="get">
+<form action="/deleteboard/${findone.id}" method="get">
     <input type="submit" value="삭제하기">
 </form>
 
-<form action="../update/${findone.id}" method="get">
+<form action="/updateboard/${findone.id}" method="get">
     <input type="submit" value="수정하기">
 </form>
 

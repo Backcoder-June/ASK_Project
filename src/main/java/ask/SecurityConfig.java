@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .usernameParameter("email")
                 .passwordParameter("pw")
                 .loginProcessingUrl("/loginProcess")
-                .defaultSuccessUrl("/test")
+                .defaultSuccessUrl("/allboard")
                 .failureHandler(authenticationFailureHandler)
 //                .failureUrl("/loginFail")
                 .and()
@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             // oauth2 설정
             .oauth2Login()
                 .loginPage("/login")
-                .defaultSuccessUrl("/test")
+                .defaultSuccessUrl("/allboard")
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService);
     }

@@ -1,17 +1,13 @@
-package ask;
-import javax.persistence.*;
+package ask.Board;
+public class BoardForm {
 
-@Entity
-@Table
-public class TestEntity {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String contents;
-    public TestEntity(){}
 
-    public TestEntity(Long ID, String title, String contents) {
-        this.id = ID;
+    public BoardForm(){}
+    public BoardForm(Long id, String title, String contents) {
+        this.id = id;
         this.title = title;
         this.contents = contents;
     }
@@ -41,12 +37,15 @@ public class TestEntity {
     }
 
 
-    @Override
-    public String toString() {
-        return "BoardEntity{" +
-                "ID=" + id +
-                ", title='" + title + '\'' +
-                ", contents='" + contents + '\'' +
-                '}';
+
+
+    public BoardDTO toEntity() {
+        return new BoardDTO(id, title, contents);
     }
+
+
+
+
+
+
 }
