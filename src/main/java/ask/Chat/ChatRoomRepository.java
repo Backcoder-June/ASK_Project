@@ -21,34 +21,34 @@ public interface ChatRoomRepository extends JpaRepository<ChatRoom, Long> {
 	
 	//String chatId, String pr_id, String senderId, String recipientId
 
-	@Query(value = "SELECT * FROM CHATROOM AS c JOIN BOARD as b ON c.pr_id = b.id WHERE c.sellerid =: #{#userId} OR c.buyerid =: #{#userId}", nativeQuery = true)
+	@Query(value = "SELECT * FROM CHATROOM AS c JOIN BOARD as b ON c.pr_id = b.id WHERE c.sellerid = :#{#userId} OR c.buyerid = :#{#userId}", nativeQuery = true)
 	public List<ChatList> findByUserId(@Param("userId") String userId);
 
-	@Query(value = "SELECT COUNT(*) FROM CHATROOM WHERE PR_ID = #{pr_id} AND buyerid = #{buyerId};\n", nativeQuery = true)
-	public int countByChatId(int pr_id, String buyerId);
+	@Query(value = "SELECT COUNT(*) FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyerid = :#{#buyerId}", nativeQuery = true)
+	public int countByChatId(@Param("pr_id")int pr_id, @Param("buyerId")String buyerId);
 
-	@Query(value = "", nativeQuery = true)
+	@Query(value = "SELECT * FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyerid = :#{#buyerId}", nativeQuery = true)
 	public ChatRoom findByChatId(int pr_id, String buyerId);
 
-	@Query(value = "", nativeQuery = true)
-	public void appendMessage(ChatRoom chatRoom) throws FileNotFoundException, IOException;
 
-	@Query(value = "", nativeQuery = true)
+	@Query(value = "SELECT ID FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyerid = :#{#buyerId}", nativeQuery = true)
 	public int getId(int pr_id, String buyerId);
 
-	@Query(value = "", nativeQuery = true)
+	@Transactional
+	@Modifying
+	@Query(value = "UPDATE CHATROOM SET filename = :#{#fileName} WHERE ID = :#{#id}", nativeQuery = true)
 	public void updateFileName(int id, String fileName);
 
-	@Query(value = "", nativeQuery = true)
+	@Query(value = "UPDATE CHATROOM SET chatReadBuy = :#{#chatReadBuy} WHERE ID = :#{#id}", nativeQuery = true)
 	public void updateChatReadBuy(int id, int chatReadBuy);
 
-	@Query(value = "", nativeQuery = true)
+	@Query(value = "UPDATE CHATROOM SET chatReadSell = :#{#chatReadSell} WHERE ID = :#{#id}", nativeQuery = true)
 	public void updateChatReadSell(int id, int chatReadSell);
 
-	@Query(value = "", nativeQuery = true)
+	@Query(value = "SELECT COUNT(id) FROM CHATROOM WHERE (sellerid = :#{#userId} AND chatReadSell = 0) OR (buyerid = :#{#userId} AND chatReadBuy = 0)", nativeQuery = true)
 	public int getUnreadMessages(String userId);
 
-	@Query(value = "", nativeQuery = true)
+	@Query(value = "SELECT id FROM CHATROOM WHERE (sellerid = :#{#userId} AND chatReadSell = 0) OR (buyerid = :#{#userId} AND chatReadBuy = 0)", nativeQuery = true)
 	public List<Integer> getUnreadChatRoom(String userId);
 
 	
