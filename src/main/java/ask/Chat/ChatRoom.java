@@ -4,21 +4,21 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "CHAT")
+@Table(name = "CHATROOM")
 public class ChatRoom {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int pr_id;
-	private String sellerId;
-	private String buyerId;
-	private String fileName;
-	private Timestamp createdDate;
+	private String seller_id;
+	private String buyer_id;
+	private String file_name;
+	private Timestamp created_date;
 	private String pr_title;
 
-	private int chatReadBuy;
-	private int chatReadSell;
+	private int chat_read_buy;
+	private int chat_read_sell;
 	//not in DB
 	private String content;
 	private String sendTime;
@@ -31,8 +31,8 @@ public class ChatRoom {
 	
 	@Override
 	public String toString() {
-		return "ChatRoom [id=" + id + ", pr_id=" + pr_id + ", sellerId=" + sellerId + ", buyerId=" + buyerId
-				+ ", fileName=" + fileName + ", createdDate=" + createdDate + ", content=" + content + ", sendTime="
+		return "ChatRoom [id=" + id + ", pr_id=" + pr_id + ", sellerId=" + seller_id + ", buyerId=" + buyer_id
+				+ ", fileName=" + file_name + ", createdDate=" + created_date + ", content=" + content + ", sendTime="
 				+ sendTime + ", senderId=" + senderId + ", pr_title=" + pr_title + "]";
 	}
 
@@ -42,13 +42,13 @@ public class ChatRoom {
 		super();
 		this.id = id;
 		this.pr_id = pr_id;
-		this.sellerId = sellerId;
-		this.buyerId = buyerId;
-		this.fileName = fileName;
-		this.createdDate = createdDate;
+		this.seller_id = sellerId;
+		this.buyer_id = buyerId;
+		this.file_name = fileName;
+		this.created_date = createdDate;
 		this.pr_title = pr_title;
-		this.chatReadBuy = chatReadBuy;
-		this.chatReadSell = chatReadSell;
+		this.chat_read_buy = chatReadBuy;
+		this.chat_read_sell = chatReadSell;
 	}
 	
 	
@@ -56,19 +56,19 @@ public class ChatRoom {
 	
 
 	public int getChatReadBuy() {
-		return chatReadBuy;
+		return chat_read_buy;
 	}
 
 	public void setChatReadBuy(int chatReadBuy) {
-		this.chatReadBuy = chatReadBuy;
+		this.chat_read_buy = chatReadBuy;
 	}
 
 	public int getChatReadSell() {
-		return chatReadSell;
+		return chat_read_sell;
 	}
 
 	public void setChatReadSell(int chatReadSell) {
-		this.chatReadSell = chatReadSell;
+		this.chat_read_sell = chatReadSell;
 	}
 
 	public ChatRoom() {
@@ -99,35 +99,35 @@ public class ChatRoom {
 	}
 
 	public String getSellerId() {
-		return sellerId;
+		return seller_id;
 	}
 
 	public void setSellerId(String sellerId) {
-		this.sellerId = sellerId;
+		this.seller_id = sellerId;
 	}
 
 	public String getBuyerId() {
-		return buyerId;
+		return buyer_id;
 	}
 
 	public void setBuyerId(String buyerId) {
-		this.buyerId = buyerId;
+		this.buyer_id = buyerId;
 	}
 
 	public String getFileName() {
-		return fileName;
+		return file_name;
 	}
 
 	public void setFileName(String fileName) {
-		this.fileName = fileName;
+		this.file_name = fileName;
 	}
 
 	public Timestamp getCreatedDate() {
-		return createdDate;
+		return created_date;
 	}
 
 	public void setCreatedDate(Timestamp createdDate) {
-		this.createdDate = createdDate;
+		this.created_date = createdDate;
 	}
 
 	public String getContent() {

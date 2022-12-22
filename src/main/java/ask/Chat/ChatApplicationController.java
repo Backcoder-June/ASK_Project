@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import ask.Board.BoardController;
+import ask.Board.BoardDTO;
+import ask.Member.MemberDTO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,9 +69,9 @@ public class ChatApplicationController {
             System.out.println("모델 : "+chatRoom.toString());
 
             // 정보보내기 
-            String sessionId = (String)session.getAttribute("sessionid");
-    		
-    		String buyerId = sessionId;
+		MemberDTO sessiondto = (MemberDTO)session.getAttribute("sessiondto");
+
+		String buyerId = sessiondto.getEmail();
     		int pr_id = chatRoom.getPr_id();
     		int id = chatRoomService.getId(pr_id, buyerId);
     		String pr_title = chatRoom.getPr_title();
@@ -103,7 +105,7 @@ public class ChatApplicationController {
     @RequestMapping(value="/chatRoom/{pr_id}/{buyerId}", method=RequestMethod.GET)
 	public String getChatRoom(@PathVariable Map<String, String> requestVar,
 			Model model, HttpSession session) throws IOException {
-    	
+
     	String sessionId = (String)session.getAttribute("sessionid");
 		
 		String buyerId = requestVar.get("buyerId");

@@ -1,6 +1,15 @@
 package ask.Board;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "BOARD")
 public class BoardDTO {
@@ -8,37 +17,8 @@ public class BoardDTO {
     private Long id;
     private String title;
     private String contents;
-    public BoardDTO(){}
+    private String userid;
 
-    public BoardDTO(Long ID, String title, String contents) {
-        this.id = ID;
-        this.title = title;
-        this.contents = contents;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContents() {
-        return contents;
-    }
-
-    public void setContents(String contents) {
-        this.contents = contents;
-    }
 
 
     @Override

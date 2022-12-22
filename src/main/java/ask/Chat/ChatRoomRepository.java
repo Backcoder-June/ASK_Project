@@ -16,39 +16,43 @@ public interface ChatRoomRepository extends JpaRepository<ChatRoom, Long> {
 
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO CHATROOM(pr_id, sellerId, buyerId, fileName, createdDate, pr_title) VALUES ( :#{#chatRoom.pr_id}, :#{#chatRoom.sellerId}, :#{#chatRoom.buyerId}, :#{#chatRoom.fileName}, :#{#chatRoom.createdDate}, :#{#chatRoom.pr_title})", nativeQuery = true)
+	@Query(value = "INSERT INTO CHATROOM(pr_id, seller_id, buyer_id, file_name, created_date, pr_title) VALUES ( :#{#chatRoom.pr_id}, :#{#chatRoom.sellerId}, :#{#chatRoom.buyerId}, :#{#chatRoom.fileName}, :#{#chatRoom.createdDate}, :#{#chatRoom.pr_title})", nativeQuery = true)
 	public void addChatRoom (@Param("chatRoom") ChatRoom chatRoom) throws IOException;
 	
 	//String chatId, String pr_id, String senderId, String recipientId
 
-	@Query(value = "SELECT * FROM CHATROOM AS c JOIN BOARD as b ON c.pr_id = b.id WHERE c.sellerid = :#{#userId} OR c.buyerid = :#{#userId}", nativeQuery = true)
+	@Query(value = "SELECT * FROM CHATROOM AS c JOIN BOARD as b ON c.pr_id = b.id WHERE c.seller_id = :#{#userId} OR c.buyer_id = :#{#userId}", nativeQuery = true)
 	public List<ChatList> findByUserId(@Param("userId") String userId);
 
-	@Query(value = "SELECT COUNT(*) FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyerid = :#{#buyerId}", nativeQuery = true)
+	@Query(value = "SELECT COUNT(*) FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyer_id = :#{#buyerId}", nativeQuery = true)
 	public int countByChatId(@Param("pr_id")int pr_id, @Param("buyerId")String buyerId);
 
-	@Query(value = "SELECT * FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyerid = :#{#buyerId}", nativeQuery = true)
+	@Query(value = "SELECT * FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyer_id = :#{#buyerId}", nativeQuery = true)
 	public ChatRoom findByChatId(int pr_id, String buyerId);
 
 
-	@Query(value = "SELECT ID FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyerid = :#{#buyerId}", nativeQuery = true)
+	@Query(value = "SELECT ID FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyer_id = :#{#buyerId}", nativeQuery = true)
 	public int getId(int pr_id, String buyerId);
 
 	@Transactional
 	@Modifying
-	@Query(value = "UPDATE CHATROOM SET filename = :#{#fileName} WHERE ID = :#{#id}", nativeQuery = true)
+	@Query(value = "UPDATE CHATROOM SET file_name = :#{#fileName} WHERE ID = :#{#id}", nativeQuery = true)
 	public void updateFileName(int id, String fileName);
 
-	@Query(value = "UPDATE CHATROOM SET chatReadBuy = :#{#chatReadBuy} WHERE ID = :#{#id}", nativeQuery = true)
+	@Transactional
+	@Modifying
+	@Query(value = "UPDATE CHATROOM SET chat_read_buy = :#{#chatReadBuy} WHERE ID = :#{#id}", nativeQuery = true)
 	public void updateChatReadBuy(int id, int chatReadBuy);
 
-	@Query(value = "UPDATE CHATROOM SET chatReadSell = :#{#chatReadSell} WHERE ID = :#{#id}", nativeQuery = true)
+	@Modifying
+	@Transactional
+	@Query(value = "UPDATE CHATROOM SET chat_read_sell = :#{#chatReadSell} WHERE ID = :#{#id}", nativeQuery = true)
 	public void updateChatReadSell(int id, int chatReadSell);
 
-	@Query(value = "SELECT COUNT(id) FROM CHATROOM WHERE (sellerid = :#{#userId} AND chatReadSell = 0) OR (buyerid = :#{#userId} AND chatReadBuy = 0)", nativeQuery = true)
+	@Query(value = "SELECT COUNT(id) FROM CHATROOM WHERE (seller_id = :#{#userId} AND chat_read_sell = 0) OR (buyer_id = :#{#userId} AND chat_read_buy = 0)", nativeQuery = true)
 	public int getUnreadMessages(String userId);
 
-	@Query(value = "SELECT id FROM CHATROOM WHERE (sellerid = :#{#userId} AND chatReadSell = 0) OR (buyerid = :#{#userId} AND chatReadBuy = 0)", nativeQuery = true)
+	@Query(value = "SELECT id FROM CHATROOM WHERE (seller_id = :#{#userId} AND chat_read_sell = 0) OR (buyer_id = :#{#userId} AND chat_read_buy = 0)", nativeQuery = true)
 	public List<Integer> getUnreadChatRoom(String userId);
 
 	
