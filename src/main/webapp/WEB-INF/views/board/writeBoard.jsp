@@ -31,6 +31,7 @@
         <label class="form-label">내용</label>
         <textarea class="form-control" rows="5" name="contents"></textarea>
     </div>
+    <input type="hidden" value="${sessionScope.sessiondto.nickname}" name="userid">
     <button type="submit" class="btn btn-primary">작성</button>
 </form>
 

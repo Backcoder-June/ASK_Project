@@ -29,8 +29,8 @@ public class BoardController {
 
     @GetMapping("/oneboard/{id}")
     public String article(@PathVariable Long id, Model model) {
-        BoardDTO findone = boardRepository.jpafindOne(id);
-        model.addAttribute("findone", findone);
+        BoardDTO oneBoard = boardRepository.jpafindOne(id);
+        model.addAttribute("oneBoard", oneBoard);
         return "board/oneBoard";
     }
 
@@ -44,7 +44,7 @@ public class BoardController {
     @PostMapping("/writeboard")
     public String getinput(BoardForm boardForm) {
         BoardDTO boardDTO = boardForm.toEntity();
-        boardRepository.save(boardDTO);
+        boardRepository.saveBaord(boardDTO);
 
         return "redirect:/allboard";
     }

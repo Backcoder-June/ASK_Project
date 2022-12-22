@@ -12,6 +12,11 @@ import java.util.List;
 @Repository
 public interface BoardRepository extends JpaRepository<BoardDTO, Long> {
 
+    @Transactional
+    @Modifying
+    @Query(value = "INSERT INTO BOARD (title, contents, userid) VALUES (:#{#oneBoard.title}, :#{#oneBoard.contents}, :#{#oneBoard.userid})", nativeQuery = true)
+    void saveBaord(@Param("oneBoard")BoardDTO oneBoard);
+
     @Query(value = "SELECT * FROM BOARD", nativeQuery = true)
     List<BoardDTO> jpafindAll();
 

@@ -18,19 +18,15 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
 <script src="${path}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="main-container">
+
+채팅방 바디 입니다
+<br>
+    <div class="main-container2">
         <!-- content-section -->
-        <div class="content-container">
-            
-            <div id="chatImg" class="chatroom-picture-box mb-3">
-                
-                <p>클릭시 확대</p>
-            </div>
-            
-            
+        <div class="content-container2">
             
 
-  <div class="chatroom-container">
+  <div class="chatroom-container2">
     <div id="chatImg2" class="chatroom-picture-box2 ">
       
     </div>
@@ -88,37 +84,10 @@ var pr_id = "${pr_id}";
 var id = "${id}";
 var pr_title = "${pr_title}";
 
-var img = ["${img1}", "${img2}", "${img3}", "${img4}", "${img5}", "${img6}"];
-
-for(var i= 0; i<img.length; i++){
-if(img[i] !=""){$("#chatImg").append('<div class="roomPictureS"><img src="/upload/'+ img[i] +'" height=100% width=100%></div>'); }
-}
-
-for(var i= 0; i<img.length; i++){
-if(img[i] !=""){$("#chatImg2").append('<div class="roomPictureB close"><img src="/upload/'+ img[i] +'" height=100% width=100%></div>'); }
-}
-
-let chatRoomPictureS = $('.roomPictureS');
-let chatRoomPictureB = $('.roomPictureB');
-
-for(let i = 0; i< chatRoomPictureS.length; i++){
-
-    chatRoomPictureS[i].addEventListener('click', function(){
-    chatRoomPictureB.addClass('close');
-    chatRoomPictureB.eq(i).removeClass('close');
-})
-
-}
 
 
 
 
-
-$(document).ready(function(){
-    connect();
-    ajaxChatRead();
-});
-    
     function connect() {
         <%-- map URL using SockJS--%>
         var socket = new SockJS('/broadcast');
@@ -158,7 +127,7 @@ $(document).ready(function(){
             'buyerId': buyerId, 
             'sellerId': sellerId,
             'pr_id': pr_id,
-            'senderId': sessionId    //채팅리스트에서 입장하는 것  
+            'senderId': sessionId    //채팅리스트에서 입장하는 것
             });
         $('#message').val("");
     }
@@ -241,18 +210,25 @@ $(document).ready(function(){
 		});
 	}
 
+$(document).ready(function(){
+    connect();
+    ajaxChatRead();
+});
+
+
 
 
 </script>
 
     <script>
+        let sessionId = '${sessionScope.sessiondto.email}';
         let chatroomContentMessage = document.querySelector('.chatroom-content-message');
         let messageFormId = document.querySelectorAll('.message-id');
         let messageFormTime = document.querySelectorAll('.message-time');
         let messageFormContent = document.querySelectorAll('.message-content');
         let messageForm = document.querySelectorAll('.message-id-time-content');
         console.log(sessionId);
-        console.log(messageFormId[0].value);
+        // console.log(messageFormId[0].value);
      
 
         for(let i = 0; i<messageForm.length; i++){
@@ -271,15 +247,7 @@ $(document).ready(function(){
         } 
         chatroomContentMessage.scrollTop = chatroomContentMessage.scrollHeight;
 
-    </script>
 
-    <script>
-        let mapTag = document.querySelector('.map-tag');
-        let map = document.querySelector('.chatroom-map');
-
-        mapTag.addEventListener('click', function(){
-            map.style.opacity = 1;
-        })
 
 
 

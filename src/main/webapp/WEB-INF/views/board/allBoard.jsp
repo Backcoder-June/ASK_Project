@@ -32,6 +32,9 @@
 
 <span id="userNickname"></span> 님 환영합니다! <br>
 <br>
+<a href="/chatList">채팅리스트</a>
+<br>
+
 
 <div id="logout"></div>
 
@@ -40,25 +43,22 @@
     <button type="submit" class="btn btn-primary">글쓰기</button>
 </form>
 
-<c:forEach items="${all}" var="each">
 
-<table class="table">
-    <thead>
+<table border="5">
     <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Title</th>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Writer</th>
     </tr>
-    </thead>
-    <tbody>
 
+<c:forEach items="${all}" var="each">
     <tr>
         <th>${each.id}</th>
-        <td><a href="http://localhost:8080/oneboard/${each.id}">${each.title}</a></td>
+        <th><a href="http://localhost:8080/oneboard/${each.id}">${each.title}</a></th>
+        <th>${each.userid}</th>
     </tr>
-
-    </tbody>
-</table>
 </c:forEach>
+</table>
 
 
 </body>
