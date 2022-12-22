@@ -104,8 +104,6 @@ public class ChatRoomService {
 
 	//no connection with DB
 	public void appendMessage(ChatRoom chatRoom) throws IOException {
-		
-		
 		int pr_id = chatRoom.getPr_id();
 		String buyerId = chatRoom.getBuyerId();
 		
