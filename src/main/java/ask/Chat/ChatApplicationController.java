@@ -71,7 +71,7 @@ public class ChatApplicationController {
             // 정보보내기 
 		MemberDTO sessiondto = (MemberDTO)session.getAttribute("sessiondto");
 
-		String buyerId = sessiondto.getEmail();
+			String buyerId = sessiondto.getNickname();
     		int pr_id = chatRoom.getPr_id();
     		int id = chatRoomService.getId(pr_id, buyerId);
     		String pr_title = chatRoom.getPr_title();
@@ -106,8 +106,8 @@ public class ChatApplicationController {
 	public String getChatRoom(@PathVariable Map<String, String> requestVar,
 			Model model, HttpSession session) throws IOException {
 
-    	String sessionId = (String)session.getAttribute("sessionid");
-		
+//    	String sessionId = (String)session.getAttribute("sessiondto");
+
 		String buyerId = requestVar.get("buyerId");
 		int pr_id = Integer.parseInt(requestVar.get("pr_id"));
 			
@@ -158,6 +158,7 @@ public class ChatApplicationController {
    		
    		JSONObject jsn = new JSONObject(json);
    		String sessionid = (String) jsn.get("sessionid");
+		System.out.println("sessioindi : " + sessionid);
    		List<ChatRoom> chatRoomList = chatRoomService.findByUserId(sessionid);
    		
    		JSONArray ja = new JSONArray();

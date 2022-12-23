@@ -18,9 +18,9 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
 <script src="${path}/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="main-container">
+    <div class="main-container2">
         <!-- content-section -->
-        <div class="content-container">
+        <div class="content-container2">
             
             <div id="chatImg" class="chatroom-picture-box mb-3">
                 
@@ -30,7 +30,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
             
             
 
-  <div class="chatroom-container">
+  <div class="chatroom-container2">
     <div id="chatImg2" class="chatroom-picture-box2 ">
       
     </div>
@@ -87,6 +87,7 @@ var sellerId = "${sellerId}";
 var pr_id = "${pr_id}";
 var id = "${id}";
 var pr_title = "${pr_title}";
+var sessionId = '${sessionScope.sessiondto.nickname}';
 
 var img = ["${img1}", "${img2}", "${img3}", "${img4}", "${img5}", "${img6}"];
 
@@ -256,8 +257,7 @@ $(document).ready(function(){
         let messageFormContent = document.querySelectorAll('.message-content');
         let messageForm = document.querySelectorAll('.message-id-time-content');
         console.log(sessionId);
-        console.log(messageFormId[0].value);
-     
+
 
         for(let i = 0; i<messageForm.length; i++){
             if(messageFormId[i].value == sessionId) {

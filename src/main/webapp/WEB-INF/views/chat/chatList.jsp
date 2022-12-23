@@ -31,7 +31,7 @@
     
         <script>
             let chatList = document.querySelector('.chatlist-box');
-            var sessionid = '${sessionScope.sessiondto.email}';
+            var sessionid = '${sessionScope.sessiondto.nickname}';
             
             $(document).ready(initialize());
 
@@ -72,8 +72,7 @@
                     contentType: "application/json",
                  
                     success: function (data) {
-                        alert("챗리스트 success");
-    
+
                         var parsed = JSON.parse(data);
                         var length = parsed.chatList.length;
                         for (var i = 0; i < length; i++) {
