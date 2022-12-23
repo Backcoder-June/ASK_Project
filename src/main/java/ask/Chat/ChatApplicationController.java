@@ -158,11 +158,11 @@ public class ChatApplicationController {
    		
    		JSONObject jsn = new JSONObject(json);
    		String sessionid = (String) jsn.get("sessionid");
-   		List<ChatList> chatRoomList = chatRoomService.findByUserId(sessionid);
+   		List<ChatRoom> chatRoomList = chatRoomService.findByUserId(sessionid);
    		
    		JSONArray ja = new JSONArray();
 
-   		 for (ChatList chatList : chatRoomList) {
+   		 for (ChatRoom chatList : chatRoomList) {
    			
    			 JSONObject jo = new JSONObject();
    			 jo.put("pr_id", chatList.getPr_id());
@@ -255,13 +255,13 @@ public class ChatApplicationController {
 		//JSON.get([mapped name])으로 value 추출하기
 		String sessionid = (String) jsn.get("sessionid");
 		//email에 해당되는 모든 chatRoom select 받기
-		List<ChatList> chatRoomList = chatRoomService.findByUserId(sessionid);
+		List<ChatRoom> chatRoomList = chatRoomService.findByUserId(sessionid);
 		//chatRoom 정보는 JSON Array에 저장됨
 		JSONArray ja = new JSONArray();
 		//email에 해당되는 읽지 않은 chatRoom select 받기
 		List<Integer> unreadChatId = chatRoomService.getUnreadChatRoom(sessionid);
 
-		 for (ChatList chatList : chatRoomList) {
+		 for (ChatRoom chatList : chatRoomList) {
 			//chatRoom 정보를 JSON Object에 put 해줌, chatRoom이 반복문에서 넘어갈 때마다 객체 초기화 
 			 JSONObject jo = new JSONObject();
 			 jo.put("pr_id", chatList.getPr_id());

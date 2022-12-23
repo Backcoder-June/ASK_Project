@@ -91,8 +91,7 @@ public class ChatRoomService {
     
     
     
-	public List<ChatList> findByUserId(String UserId) {
-		
+	public List<ChatRoom> findByUserId(String UserId) {
 		return chatRoomRepository.findByUserId(UserId);
 	}
 
