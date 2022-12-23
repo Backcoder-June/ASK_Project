@@ -220,7 +220,7 @@ $(document).ready(function(){
 </script>
 
     <script>
-        let sessionId = '${sessionScope.sessiondto.email}';
+        let sessionId = '${sessionScope.sessiondto.nickname}';
         let chatroomContentMessage = document.querySelector('.chatroom-content-message');
         let messageFormId = document.querySelectorAll('.message-id');
         let messageFormTime = document.querySelectorAll('.message-time');

@@ -60,7 +60,7 @@
     <c:if test="${sessionScope.sessiondto.email != oneBoard.userid && not empty sessionScope.sessiondto.email }">
         <form id="chatSubmit_form" action="/chatMessage" method="GET">
             <a id="chatLink" href="javascript:{}" onclick="chatSubmit()">
-                <input type="hidden" name="buyerId" value="${sessionScope.sessiondto.email}" />
+                <input type="hidden" name="buyerId" value="${sessionScope.sessiondto.nickname}" />
                 <input type="hidden" name="sellerId" value="${oneBoard.userid}" />
                 <input type="hidden" name="pr_id" value="${oneBoard.id}" />
                 <input type="hidden" name="pr_title" value="${oneBoard.title}" />
