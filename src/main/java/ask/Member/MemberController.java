@@ -24,6 +24,7 @@ public class MemberController {
         this.memberRepository = memberRepository;
     }
 
+
     @GetMapping("/login")
     public String loginHome() {
         return "member/login";
@@ -32,6 +33,7 @@ public class MemberController {
     //PostMapping 로그인은 Spring Security Config 에서 처리
 
 
+    // 최종적으로 /oauth2/authorization/naver||google 로 보내서 oauth 처리
     @GetMapping("/login/{oauth2}")
     public String loginGoogle(@PathVariable String oauth2) {
         return "redirect:/oauth2/authorization/" + oauth2;
@@ -87,6 +89,6 @@ public class MemberController {
         MemberDTO sessiondto = (MemberDTO) session.getAttribute("sessiondto");
         sessiondto.setNickname(nickname);
         memberRepository.setNickname(nickname, sessiondto.getId());
-        return "redirect:/test";
+        return "redirect:/allboard";
     }
 }
