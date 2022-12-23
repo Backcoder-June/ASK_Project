@@ -106,16 +106,20 @@ public class ChatRoomService {
 	public void appendMessage(ChatRoom chatRoom) throws IOException {
 		int pr_id = chatRoom.getPr_id();
 		String buyerId = chatRoom.getBuyerId();
-		
+
+		System.out.println("pr id : " + pr_id);
+		System.out.println("buyerid : " + buyerId);
+		System.out.println("파인드파이챗아이디 전");
 		ChatRoom chatRoomAppend = chatRoomRepository.findByChatId(pr_id, buyerId);
-				
+		System.out.println("파인드바이아이디 성공");
+		System.out.println("어펜드 : "+chatRoomAppend.toString());
 		String pathName = fileUploadPath + chatRoomAppend.getFileName();
 		
 		FileOutputStream fos = new FileOutputStream(pathName, true);
 		String content = chatRoom.getContent();
 		String senderId = chatRoom.getSenderId();
 		String sendTime = chatRoom.getSendTime();
-		System.out.println("print:" + content);
+//		System.out.println("print:" + content);
 		
 		String writeContent = senderId + "\n" + content + "\n" + "[" +  sendTime + "]" + "\n";
 		

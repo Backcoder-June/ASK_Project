@@ -28,7 +28,7 @@ public interface ChatRoomRepository extends JpaRepository<ChatRoom, Long> {
 	public int countByChatId(@Param("pr_id")int pr_id, @Param("buyerId")String buyerId);
 
 	@Query(value = "SELECT * FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyer_id = :#{#buyerId}", nativeQuery = true)
-	public ChatRoom findByChatId(int pr_id, String buyerId);
+	public ChatRoom findByChatId(@Param("pr_id")int pr_id, @Param("buyerId")String buyerId);
 
 
 	@Query(value = "SELECT ID FROM CHATROOM WHERE PR_ID = :#{#pr_id} AND buyer_id = :#{#buyerId}", nativeQuery = true)
