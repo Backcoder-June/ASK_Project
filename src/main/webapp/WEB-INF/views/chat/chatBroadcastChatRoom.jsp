@@ -83,7 +83,7 @@ var sellerId = "${sellerId}";
 var pr_id = "${pr_id}";
 var id = "${id}";
 var pr_title = "${pr_title}";
-
+var content = '';
 
 
 
@@ -119,8 +119,7 @@ var pr_title = "${pr_title}";
     
     <%-- 보내기 버튼 클릭시 실행되는 메서드--%>
     function send() {
-        var content = $('#message').val();
-        
+        content = $('#message').val();
         sendBroadcast({
             'id': id,
             'content': content,

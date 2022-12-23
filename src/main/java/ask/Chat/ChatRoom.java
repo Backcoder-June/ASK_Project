@@ -9,19 +9,31 @@ public class ChatRoom {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
 	private int id;
+	@Column
 	private int pr_id;
+	@Column
 	private String seller_id;
+	@Column
 	private String buyer_id;
+	@Column
 	private String file_name;
+	@Column
 	private Timestamp created_date;
+	@Column
 	private String pr_title;
-
+	@Column
 	private int chat_read_buy;
+	@Column
 	private int chat_read_sell;
+
 	//not in DB
+	@Transient
 	private String content;
+	@Transient
 	private String sendTime;
+	@Transient
 	private String senderId;
 	
 	
