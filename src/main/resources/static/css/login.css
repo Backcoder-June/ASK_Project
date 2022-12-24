@@ -3,6 +3,10 @@ a {
     color: black;
 }
 
+#loginFailMessage {
+    color: red;
+}
+
 .login-container {
     z-index: 11;
     position: absolute;
@@ -202,7 +206,7 @@ table.loginInfoTable td {
     font-size: 0.8rem;
 }
 
-.login-box-kakao-naver {
+.login-box-google-naver {
     width: 70%;
     height: 3rem;
     display: flex;
@@ -210,14 +214,14 @@ table.loginInfoTable td {
     margin-top: -50px;
 }
 
-.login-box-kakao-naver > div {
+.login-box-google-naver > div {
     padding: 3px;
     width: 100%;
     box-shadow: 5px 5px 5px rgb(228, 228, 228);
     text-align: center;
 }
 
-.login-box-kakao-naver img {
+.login-box-google-naver img {
     width: 40px;
     height: 40px;
     margin-right: 5px;

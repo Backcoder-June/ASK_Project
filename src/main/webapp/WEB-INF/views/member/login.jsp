@@ -59,27 +59,29 @@
         <input class="login-input" type="password" name="pw" id="pw" autocomplete="off" placeholder="PASSWORD"><br>
         <div class="id-check-box"><input class="remember-id mb-2" type="checkbox"><span>아이디 기억하기</span>
         </div>
-
+        <c:if test="${param.get('error')}">
+          <div id="loginFailMessage">
+              ${exception}
+          </div>
+        </c:if>
+        <br>
         <input class="login-button" type="submit" id="btn" value="  지구 로그인" >
       </form>
       <img class="billyLoginIcon" src="/pictures/Billycon.png" width=40; height=40;>
 
-      <div class="login-box-kakao-naver">
+      <%--  <a id="kakao-login-btn" href="javascript:kakaoLogin();" >
+          <img src="${path}/pictures/Kakao_logo.jpg"> 카카오 로그인
+        </a>--%>
+      <div class="login-box-google-naver">
         <div>
-          <a id="kakao-login-btn" href="javascript:kakaoLogin();" >
-            <img src="${path}/pictures/Kakao_logo.jpg"> 카카오 로그인
-          </a>
-          <br>
-          <a href="/login/google">Google Login</a>
-          <br>
-          <a href="/login/naver">Naver Login</a>
-          <br>
-
-
-
+          <a href="/login/google">구글 로그인</a>
         </div>
       </div>
-
+      <div class="login-box-google-naver" style="margin-top: 10px">
+        <div>
+        <a href="/login/naver">네이버 로그인</a>
+        </div>
+      </div>
 
 
       <br><br><br><br><br><br>

@@ -3,10 +3,12 @@ package ask.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -15,8 +17,6 @@ public class MemberController {
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
-
-
     MemberRepository memberRepository;
 
     @Autowired
@@ -26,7 +26,10 @@ public class MemberController {
 
 
     @GetMapping("/login")
-    public String loginHome() {
+    public String loginHome(@RequestParam(value = "error", required = false) String error,
+                            @RequestParam(value = "exception", required = false) String exception,  Model model) {
+        model.addAttribute("error", error);
+        model.addAttribute("exception", exception);
         return "member/login";
     }
 
@@ -59,10 +62,8 @@ public class MemberController {
 
     @PostMapping("/joinProcess")
     public String joinProcess(MemberDTO memberDTO) throws Exception {
-        System.out.println(memberDTO);
         // PW 암호화
         memberDTO.setPw(bCryptPasswordEncoder.encode(memberDTO.getPw()));
-
         memberRepository.registerMember(memberDTO);
         return "redirect:/login";
     }
