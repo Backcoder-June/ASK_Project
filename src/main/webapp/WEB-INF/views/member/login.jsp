@@ -67,7 +67,6 @@
         <br>
         <input class="login-button" type="submit" id="btn" value="  지구 로그인" >
       </form>
-      <img class="billyLoginIcon" src="/pictures/Billycon.png" width=40; height=40;>
 
       <%--  <a id="kakao-login-btn" href="javascript:kakaoLogin();" >
           <img src="${path}/pictures/Kakao_logo.jpg"> 카카오 로그인
