@@ -6,9 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -56,7 +54,6 @@ public class MemberController {
 
     @GetMapping("/join")
     public String joinPage() {
-
         return "member/join";
     }
 
@@ -74,11 +71,27 @@ public class MemberController {
         System.out.println("유저아이디 : " + email);
         Optional<MemberDTO> findByEmail = memberRepository.findByEmail(email);
         String idcheck = "false";
-        if (!findByEmail.isEmpty()) {
+        if (findByEmail.isPresent()) {
             idcheck = "true";
         }
         return idcheck;
     }
+
+    @ResponseBody
+    @PostMapping(value = "/nicknameCheck")
+    public String nicknameCheck(@RequestParam(value = "name", required = true) String name) {
+        Optional<String> findByName = memberRepository.findByName(name);
+        String nameCheck = "false";
+        if (findByName.isPresent()) {
+            nameCheck = "true";
+        }
+        return nameCheck;
+    }
+
+
+
+
+
 
     @GetMapping("/nicknameRegister")
     public String nicknameRegister() {
