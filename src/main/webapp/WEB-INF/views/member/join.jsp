@@ -33,29 +33,36 @@
       <table class="type09">
         <tr>
           <th>이메일</th>
-          <td><input type="text" name="email" id="email"
+          <td>
+            <input type="text" name="email" id="email"
                      placeholder="이메일을 입력해 주세요." required>
             <button class="signup-check-button" type="button" id="id-btn"
-                    value="중복확인" onclick="idcheck()">중복확인</button> <span
-                    id="id_check"></span></td>
+                    value="중복확인" onclick="idcheck()">중복확인</button> <span id="id_check"></span>
+          </td>
         </tr>
         <tr>
           <th>비밀번호</th>
-          <td><input type=password name="pw" id="pw"
-                     placeholder="비밀번호를 입력해 주세요." required oninput="pwcheck()"> <span
-                  id="pw_check"></span></td>
+          <td>
+            <input type=password name="pw" id="pw"
+                     placeholder="비밀번호를 입력해 주세요." required oninput="pwcheck()"> <span id="pw_check"></span>
+          </td>
         </tr>
         <tr>
           <th>비밀번호 확인</th>
-          <td><input type=password name="pw2" id="pw2"
+          <td>
+            <input type=password name="pw2" id="pw2"
                      placeholder="비밀번호를 한번 더 입력해 주세요." required oninput="pw2check()">
-            <span id="pw2_check"></span></td>
+            <span id="pw2_check"></span>
+          </td>
         </tr>
 
         <tr>
           <th>닉네임</th>
           <td><input type=text name="nickname" id="nickname" placeholder="닉네임을 입력해 주세요."
-                     required oninput="namecheck()"> <span id="name_check"></span>
+                     required>
+            <button class="signup-check-button" type="button" id="name-btn"
+                    value="중복확인" onclick="namecheck()">중복확인</button> <span id="name_check"></span>
+
           </td>
         </tr>
       <%--  <tr>
@@ -98,7 +105,8 @@
   function idcheck() {
     var email = $('#email').val();
 
-    var regId = /^[A-Za-z0-9]{6,20}$/;
+    var regId= /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    // var regId = /^[A-Za-z0-9]{6,20}$/;
     if (email == '') {
       $('#id_check').text("아이디를 입력해주세요");
       $('#id_check').css("color", "red");
@@ -110,7 +118,6 @@
 
       $.ajax({
         url: "idCheck",
-
         beforeSend: function(xhr){
           if(token && header) {
           xhr.setRequestHeader(header, token);}},
@@ -124,7 +131,7 @@
             btn.attr('disabled', true);
           } else {
             if (!regId.test(email)) {
-              $('#id_check').text("영문과 숫자 6~20자 이내로 입력해 주세요.");
+              $('#id_check').text("이메일 주소를 정확히 입력해 주세요.");
               $('#id_check').css("color", "red");
               id_check = false;
               btn.attr('disabled', true);
@@ -195,81 +202,57 @@
       btn.attr('disabled', true);
     }
   }
-  function phonecheck() {
-    var phone = $('#phone').val();
-    var regTel = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[0-9]{3,4}[0-9]{4}$/;
-    if (phone == '') {
-      $('#phone_check').text("전화번호를 입력해 주세요.");
-      $('#phone_check').css("color", "red");
-      phone_check = false;
-      btn.attr('disabled', true);
-    } else if (!regTel.test(phone)) {
-      $('#phone_check').text("올바른 전화번호를 입력해 주세요.. ex)01012345678");
-      $('#phone_check').css("color", "red");
-      phone_check = false;
-      btn.attr('disabled', true);
-    } else {
-      console.log("asd");
-      $.ajax({
-        url: "phoneCheck",
-        type: 'post',
-        data: { phone: phone },
-        success: function (data) {
-          if (data == 'true') {
-            $('#phone_check').text("이미 사용중인 번호 입니다");
-            $('#phone_check').css("color", "red");
-            phone_check = false;
-            btn.attr('disabled', true);
-          } else {
-            $('#phone_check').text("✅사용가능한 번호 입니다");
-            $('#phone_check').css("color", "rgb(116,232,0)");
-            phone_check = true;
-            if (id_check == true && pw_check == true && pw2_check == true && phone_check == true && email_check == true && name_check == true) {
-              btn.attr('disabled', false);
-            }
-          }
-        }
-      });
-    }
-  }
-  function emailcheck() {
-    var email = $('#email').val();
-//			var regEmail= /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z]).@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z]).[a-zA-Z]{2,3}$/;
-    var regEmail= /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-    if (email == '') {
-      $('#email_check').text("이메일을 입력해 주세요.");
-      $('#email_check').css("color", "red");
-      email_check = false;
-      btn.attr('disabled', true);
-    }else {
-      if (regEmail.test(email)) {
-        $('#email_check').text("✅사용가능한 이메일입니다.");
-        $('#email_check').css("color", "rgb(116,232,0)");
-        email_check = true;
-        /* if (id_check == true && pw_check == true && pw2_check == true && phone_check == true && email_check == true && name_check == true) {
-            btn.attr('disabled', false);
-        } */
-      }else{
-        $('#email_check').text("정확한 이메일 주소를 입력해 주세요.");
-        $('#email_check').css("color", "red");
-
-      }
-    }
-  }
   function namecheck() {
+
+    var regName = /^[A-Za-z0-9가-힣]{2,10}$/;
     var name = $('#nickname').val();
     if (name == '') {
-      $('#name_check').text("이름을 입력해 주세요.");
+      $('#name_check').text("닉네임을 입력해 주세요.");
       $('#name_check').css("color", "red");
       name_check = false;
       btn.attr('disabled', true);
-    } else if(name.length > 1) {
-      name_check = true;
-      $('#name_check').text("✅");
-      btn.attr('disabled', false);
+    } else {
+      $.ajax({
+        url: "nicknameCheck",
+        type: 'post',
+        data: { "name": name },
+        success: function (data) {
+          if (data == 'true') {
+            $('#name_check').text("이미 가입된 닉네임 입니다.");
+            $('#name_check').css("color", "red");
+            id_check = false;
+            btn.attr('disabled', true);
+          } else {
+            if (!regName.test(name)) {
+              $('#name_check').text("닉네임은 2~10글자 사이로 입력해 주세요.");
+              $('#name_check').css("color", "red");
+              id_check = false;
+              btn.attr('disabled', true);
+            } else {
+              $('#name_check').text("✅사용 가능한 닉네임 입니다");
+              $('#name_check').css("color", "rgb(116,232,0)");
+              id_check = true;
+              btn.attr('disabled', false);
+              /* 	if (id_check == true && pw_check == true && pw2_check == true && phone_check == true && email_check == true && name_check == true) {
+                      btn.attr('disabled', false);
+                  }*/
+            }
+          }
+        }
+      }); //ajax
+
+
+
 
     }
+
+    /*if(name.length > 1) {
+      name_check = true;
+      $('#name_check').text("✅");
+      btn.attr('disabled', false)
+    }*/
+
   }
 
 
