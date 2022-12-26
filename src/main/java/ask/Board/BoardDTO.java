@@ -18,7 +18,7 @@ public class BoardDTO {
     private String title;
     private String contents;
     private String userid;
-
+    private String category;
 
 
     @Override

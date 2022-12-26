@@ -15,10 +15,11 @@ public class BoardForm {
     private String title;
     private String contents;
     private String userid;
+    private String category;
 
 
     public BoardDTO toEntity() {
-        return new BoardDTO(id, title, contents, userid);
+        return new BoardDTO(id, title, contents, userid, category);
     }
 
 

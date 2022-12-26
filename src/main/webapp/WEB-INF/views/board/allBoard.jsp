@@ -46,14 +46,14 @@
 
 <table border="5">
     <tr>
-        <th>ID</th>
+        <th>Category</th>
         <th>Title</th>
         <th>Writer</th>
     </tr>
 
 <c:forEach items="${all}" var="each">
     <tr>
-        <th>${each.id}</th>
+        <th>${each.category}</th>
         <th><a href="http://localhost:8080/oneboard/${each.id}">${each.title}</a></th>
         <th>${each.userid}</th>
     </tr>
