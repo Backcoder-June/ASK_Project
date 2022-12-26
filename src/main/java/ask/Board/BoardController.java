@@ -45,7 +45,6 @@ public class BoardController {
     public String getinput(BoardForm boardForm) {
         BoardDTO boardDTO = boardForm.toEntity();
         boardRepository.saveBaord(boardDTO);
-
         return "redirect:/allboard";
     }
 

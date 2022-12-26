@@ -31,6 +31,15 @@
         <label class="form-label">내용</label>
         <textarea class="form-control" rows="5" name="contents">${update.contents}</textarea>
     </div>
+    <div class="mb-3 form-group">
+        카테고리
+        <select name="category" required>
+            <option>백엔드</option>
+            <option>프론트엔드</option>
+            <option>DB</option>
+            <option>배포</option>
+        </select>
+    </div>
     <button type="submit" class="btn btn-primary">작성</button>
     <input type="hidden" name="id" value="${update.id}">
 </form>

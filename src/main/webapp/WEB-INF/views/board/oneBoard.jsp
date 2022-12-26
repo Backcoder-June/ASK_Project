@@ -29,7 +29,7 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">ID</th>
+        <th scope="col">Category</th>
         <th scope="col">Writer</th>
         <th scope="col">Title</th>
         <th scope="col">Content</th>
@@ -37,7 +37,7 @@
     </thead>
     <tbody>
     <tr>
-        <th>${oneBoard.id}</th>
+        <th>${oneBoard.category}</th>
         <th>${oneBoard.userid}</th>
         <td>${oneBoard.title}</td>
         <td>${oneBoard.contents}</td>
