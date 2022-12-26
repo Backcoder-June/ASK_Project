@@ -20,6 +20,9 @@ public interface BoardRepository extends JpaRepository<BoardDTO, Long> {
     @Query(value = "SELECT * FROM BOARD", nativeQuery = true)
     List<BoardDTO> jpafindAll();
 
+    @Query(value = "SELECT * FROM BOARD WHERE category= :#{#category}", nativeQuery = true)
+    List<BoardDTO> findByCategory(@Param("category") String category);
+
     @Query(value = "SELECT * FROM BOARD WHERE id= :id", nativeQuery = true)
     BoardDTO jpafindOne(Long id);
 
