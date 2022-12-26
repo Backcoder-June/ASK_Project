@@ -44,11 +44,22 @@
 <a href="/allboard/프론트엔드">프론트엔드</a>
 <a href="/allboard/DB">DB</a>
 <a href="/allboard/배포">배포</a>
+<br>
+<br>
+
+<form action="/searchedList" method="get">
+    <select name="searchOption">
+        <option>제목</option>
+        <option>닉네임</option>
+    </select>
+    <input type="text" name="searchKeyword">
+    <input type="submit" value="검색">
+</form>
 
 
 
 <br>
-<form action="http://localhost:8080/writeboard/">
+<form action="writeboard/">
     <button type="submit" class="btn btn-primary">글쓰기</button>
 </form>
 

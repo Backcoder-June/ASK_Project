@@ -36,6 +36,19 @@ public class BoardController {
         return "board/allBoard";
     }
 
+    @GetMapping("/searchedList")
+    public String findBySearch(Model model, String searchOption, String searchKeyword) {
+        List<BoardDTO> all = null;
+        if (searchOption.equals("제목")) {
+            all = boardRepository.findBoardDTOByTitleContainingIgnoreCase(searchKeyword);
+        }
+        if (searchOption.equals("닉네임")) {
+            all = boardRepository.findBoardDTOByUseridContainingIgnoreCase(searchKeyword);
+        }
+        model.addAttribute("all", all);
+        return "board/allBoard";
+    }
+
 
     @GetMapping("/oneboard/{id}")
     public String article(@PathVariable Long id, Model model) {
