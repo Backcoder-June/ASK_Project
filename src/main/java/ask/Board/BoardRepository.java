@@ -31,6 +31,16 @@ public interface BoardRepository extends JpaRepository<BoardDTO, Long> {
     @Transactional
     void jpaupdate(@Param("target") BoardDTO boardDTO);
 
+//    @Query(value = "SELECT * FROM BOARD WHERE :${searchOption} LIKE :#{#searchKeyword}", nativeQuery = true)
+
+    List<BoardDTO> findBoardDTOByTitleContainingIgnoreCase(@Param("searchKeyword") String searchKeyword);
+
+    List<BoardDTO> findBoardDTOByUseridContainingIgnoreCase(@Param("searchKeyword") String searchKeyword);
+
+
+
+
+
 
     /*@Query(value = "SELECT * FROM comment WHERE nickname = :nickname", nativeQuery = true)
     List<Comment> findByNickname(@Param("nickname") String nickname);
