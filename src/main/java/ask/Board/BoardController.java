@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -20,8 +21,17 @@ public class BoardController {
     }
 
     @GetMapping("/allboard")
-    public String test2(Model model) {
+    public String allboard(Model model) {
         List<BoardDTO> all = boardRepository.jpafindAll();
+        model.addAttribute("all", all);
+        return "board/allBoard";
+    }
+
+    @GetMapping("/allboard/{category}")
+    public String findByCategory(Model model, @PathVariable("category")String category) {
+        System.out.println("카테고리 : " + category);
+
+        List<BoardDTO> all = boardRepository.findByCategory(category);
         model.addAttribute("all", all);
         return "board/allBoard";
     }

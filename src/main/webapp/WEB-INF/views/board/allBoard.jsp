@@ -39,6 +39,15 @@
 <div id="logout"></div>
 
 <br>
+<a href="/allboard">전체</a>
+<a href="/allboard/백엔드">백엔드</a>
+<a href="/allboard/프론트엔드">프론트엔드</a>
+<a href="/allboard/DB">DB</a>
+<a href="/allboard/배포">배포</a>
+
+
+
+<br>
 <form action="http://localhost:8080/writeboard/">
     <button type="submit" class="btn btn-primary">글쓰기</button>
 </form>
