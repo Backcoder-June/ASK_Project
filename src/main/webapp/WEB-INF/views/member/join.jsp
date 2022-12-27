@@ -6,6 +6,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
   <meta name="_csrf_parameter" content="${_csrf.parameterName}" />
   <meta name="_csrf_header" content="${_csrf.headerName}" />
   <meta name="_csrf" content="${_csrf.token}" />
@@ -18,6 +19,43 @@
 
     });
   </script>
+  <style>
+    @media screen and (max-width: 767px) {
+
+      * {
+        margin: 0;
+        padding: 0;
+        width: auto;
+      }
+
+      body {
+        width: auto;
+      }
+
+      .signup-box-title {
+        border-radius: 5px;
+        background-color: white;
+        width: 100%;
+        color: #6462cb;
+        border-bottom: solid 3px #6462cb;
+        margin : 0;
+      }
+
+      .login-container2 {
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+        width: 100%;
+      }
+
+      table.type09 {
+        border-collapse: collapse;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>

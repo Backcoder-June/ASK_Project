@@ -3,28 +3,26 @@ a {
     color: black;
 }
 
+
+body {
+     width: 960px; margin :0 auto;
+ }
+
+
+.main-container {
+    width: 100%;
+}
+
 #loginFailMessage {
     color: red;
 }
 
-.login-container {
-    z-index: 11;
-    position: absolute;
-    top: 0%;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    /*background-color: rgba(100, 100, 100, 0.1);*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 
 .login-container2 {
     align-items: center;
     flex-direction: column;
     display: flex;
+    width: 100%;
     /*  top: 0%;
       width: 100vw;
       height: 100vh;
@@ -37,7 +35,7 @@ a {
 
 .login-box {
     background-color: white;
-    width: 60rem;
+    width: 100%;
     height: 58rem;
     border-radius: 10px;
     position: relative;
@@ -77,10 +75,10 @@ a {
 
 .loginTitle {
     text-align: center;
-    margin-top: 130px;
+    margin-top: 50px;
     font-size: 38px;
     color: #6462cb;
-
+    margin-bottom: 50px;
 }
 
 .login-box-sign-box {
@@ -153,8 +151,8 @@ table.loginInfoTable td {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    line-height: 0.5;
     margin-top: -50px;
+    text-align: center;
 }
 
 .login-input {
@@ -174,6 +172,23 @@ table.loginInfoTable td {
     color: white;
     box-shadow: 5px 5px 5px rgb(228, 228, 228);
 }
+
+.oauth-login-button > a {
+    color: white;
+
+}
+
+.oauth-login-button {
+    width: 70%;
+    height: 3rem;
+    border: none;
+    background-color: lightslategray;
+    color: white;
+    box-shadow: 5px 5px 5px rgb(228 228 228);
+    margin-top: 20px;
+}
+
+
 
 .id-check-box {
     width: 70%;
