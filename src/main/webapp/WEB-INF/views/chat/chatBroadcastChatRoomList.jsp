@@ -8,6 +8,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
+
 <title>Connect Us</title>
 <script src="${path}/js/jquery-3.6.0.min.js" ></script>
 <script src="${path}/js/stomp.js" type="text/javascript"></script>
@@ -21,14 +23,7 @@ integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+f
     <div class="main-container2">
         <!-- content-section -->
         <div class="content-container2">
-            
-            <div id="chatImg" class="chatroom-picture-box mb-3">
-                
-                <p>클릭시 확대</p>
-            </div>
-            
-            
-            
+
 
   <div class="chatroom-container2">
     <div id="chatImg2" class="chatroom-picture-box2 ">

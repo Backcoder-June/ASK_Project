@@ -6,11 +6,32 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1.0, width=device-width">
   <title>지식을 구하다</title>
-  <link rel="stylesheet" href="${path}/css/header.css">
   <link rel="stylesheet" href="${path}/css/login.css">
   <link rel="stylesheet" href="${path}/css/table.css">
   <script src="${path}/js/jquery-3.6.0.min.js"></script>
+  <style>
+    @media screen and (max-width: 767px) {
+
+      * {
+        margin : 0;
+        padding: 0;
+        width: auto;
+      }
+      body {
+        width: auto;
+      }
+    }
+  </style>
+
+  <style>
+    body {
+      width: 960px; margin :0 auto;
+    }
+  </style>
+
+
   <script>
     $(document).ready(function () {
       let rememberId = document.querySelector('.rememeber-login-id');
@@ -39,12 +60,12 @@
       function kakaoLogin(){
         alert("카카오 로그인 서비스");
       }
-
-
-
-
     });
   </script>
+
+
+
+
 </head>
 
 <body>
