@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
     <title>ASK</title>
-    <link rel="stylesheet" href="${path}/css/header.css">
     <script src="${path}/js/jquery-3.6.0.min.js"></script>
 
 <script>

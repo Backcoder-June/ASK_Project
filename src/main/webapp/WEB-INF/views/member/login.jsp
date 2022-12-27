@@ -6,11 +6,14 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1.0, width=device-width">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
   <title>지식을 구하다</title>
   <link rel="stylesheet" href="${path}/css/login.css">
   <link rel="stylesheet" href="${path}/css/table.css">
   <script src="${path}/js/jquery-3.6.0.min.js"></script>
+
+
+
   <style>
     @media screen and (max-width: 767px) {
 
@@ -22,14 +25,22 @@
       body {
         width: auto;
       }
+
+      .loginTitle {
+        margin-bottom: 20px;
+        margin-top: 10px;
+      }
+
+      table.loginInfoTable {
+        margin-left: 0;
+      }
+
+
+
     }
   </style>
 
-  <style>
-    body {
-      width: 960px; margin :0 auto;
-    }
-  </style>
+
 
 
   <script>
@@ -92,19 +103,16 @@
       <%--  <a id="kakao-login-btn" href="javascript:kakaoLogin();" >
           <img src="${path}/pictures/Kakao_logo.jpg"> 카카오 로그인
         </a>--%>
-      <div class="login-box-google-naver">
-        <div>
+
+      <div class="login-box-form">
+      <div class="oauth-login-button">
           <a href="/login/google">구글 로그인</a>
-        </div>
       </div>
-      <div class="login-box-google-naver" style="margin-top: 10px">
-        <div>
+      <div class="oauth-login-button">
         <a href="/login/naver">네이버 로그인</a>
-        </div>
+      </div>
       </div>
 
-
-      <br><br><br><br><br><br>
 
       <div class="join_findInfoBTN">
         <table class="loginInfoTable">
