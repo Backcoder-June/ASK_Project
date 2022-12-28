@@ -23,13 +23,9 @@ public class ChatRoomService {
     String fileUploadPath = "c:/chatupload/";
  
     public void addChatRoom(ChatRoom chatRoom) throws IOException {
-        
         Timestamp createdDate = Timestamp.valueOf(LocalDateTime.now());
-        
         chatRoom.setCreatedDate(createdDate);
-        
         chatRoomRepository.addChatRoom(chatRoom);
-        
     }
     
     //no connection with DB
