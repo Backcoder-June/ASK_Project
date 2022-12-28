@@ -38,3 +38,6 @@ out/
 
 # oauth
 application-oauth.properties
+
+#docker
+docker-compose.yml

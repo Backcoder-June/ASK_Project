@@ -10,6 +10,7 @@
 
     <title>ASK</title>
     <link rel="stylesheet" href="${path}/css/header.css">
+    <link rel="stylesheet" href="${path}/css/table.css">
     <script src="${path}/js/jquery-3.6.0.min.js"></script>
 
 
@@ -28,7 +29,7 @@
 </head>
 
 <body>
-<table class="table">
+<table class="type09">
     <thead>
     <tr>
         <th scope="col">Category</th>
