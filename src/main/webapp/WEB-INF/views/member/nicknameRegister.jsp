@@ -23,10 +23,5 @@
   <input type="submit" value="닉네임 등록">
 </form>
 
-
-
-
-
-
 </body>
 </html>

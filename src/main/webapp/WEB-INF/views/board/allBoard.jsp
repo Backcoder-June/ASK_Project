@@ -9,7 +9,7 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
     <title>ASK</title>
     <link rel="stylesheet" href="${path}/css/table.css">
-    <link rel="stylesheet" href="${path}/css/boardList.css">
+    <link rel="stylesheet" href="${path}/css/product.css">
     <script src="${path}/js/jquery-3.6.0.min.js"></script>
 
 <script>
@@ -60,7 +60,7 @@
     <button type="submit" class="btn btn-primary">글쓰기</button>
 </form>
 
-
+<%--
 <table class="type09">
     <tr>
         <th>Category</th>
@@ -71,32 +71,49 @@
 <c:forEach items="${all}" var="each">
     <tr>
         <th>${each.category}</th>
-        <th><a href="http://localhost:8080/oneboard/${each.id}">${each.title}</a></th>
+        <th><a href="/oneboard/${each.id}">${each.title}</a></th>
         <th>${each.userid}</th>
     </tr>
 </c:forEach>
-</table>
-
-
-
-<c:forEach items="${all}" var="product" varStatus="vs">
-
-<div class="content-container">
-
-    <div class="allproduct-container">
-    <div class="product-box-item">
-
-        <div class="product-item-title">
-            <a href="/oneboard/${product.id}">${product.title}</a>
-        </div>
-        <div class="product-item-num" id="productid${vs.index}" style="display:none">${product.id}
-        </div>
-        <div class="product-item-owner close">${product.userid}</div>
-    </div>
-    </div>
-</div>
-
+</table>--%>
+<div class="pricing-box-container">
+<c:forEach items="${all}" var="each">
+	<div class="pricing-box text-center">
+		<h5>${each.category}</h5>
+		<p class="price"><a href="/oneboard/${each.id}">${each.title}</a></p>
+		<ul class="features-list">
+			<li><strong>도네이션</strong> 필요</li>
+            <li><strong>예상시간</strong> 10분</li>
+            <li><strong>작성자 </strong> ${each.userid}</li>
+            <li>1일전</li>
+		</ul>
+		<button id="chatbtn" class="btn-primary">Get Started</button>
+	</div>
 </c:forEach>
+</div>
+<%--
+	<div class="pricing-box pricing-box-bg-image text-center">
+		<h5>Premium</h5>
+		<p class="price"><sup>$</sup>39<sub>/mo</sub></p>
+		<ul class="features-list">
+			<li><strong>5</strong> Project</li>
+			<li><strong>20</strong> Team Members</li>
+			<li><strong>100</strong> Personal Projects</li>
+			<li><strong>15,000</strong> Messages</li>
+		</ul>
+		<button class="btn-primary">Get Started</button>
+	</div>
+
+--%>
+
+
+
+
+
+
+
+
+
 
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>

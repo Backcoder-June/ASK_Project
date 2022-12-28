@@ -21,7 +21,7 @@
 <body>
 <div class="mt-5 mb-5" align="center">
     <h1>
-        <a href="http://localhost:8080/allboard/"> 게시판 보기 </a>
+        <a href="/allboard/"> 게시판 보기 </a>
     </h1>
 </div>
 <form class="container" action="/writeboard" method="post">
