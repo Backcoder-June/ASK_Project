@@ -1,4 +1,11 @@
 
+
+
+#userNickname {
+    color: coral;
+    margin-left: 100px;
+}
+
 div {
     box-sizing: border-box;
 }

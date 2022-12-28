@@ -8,10 +8,11 @@
   <meta charset="UTF-8">
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
   <title>ASK</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="${path}/css/header.css">
   <script src="${path}/js/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function () {
@@ -33,7 +34,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/chatList">채팅리스트</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/allboard">Board</a>
@@ -52,7 +53,11 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <span id="logout"></span>
+      </li>
+
+      <li class="nav-item">
+      <span id="userNickname"></span> 님 환영합니다! <br>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

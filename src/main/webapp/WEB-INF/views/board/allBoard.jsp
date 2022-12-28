@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
     <title>ASK</title>
+    <link rel="stylesheet" href="${path}/css/table.css">
+    <link rel="stylesheet" href="${path}/css/boardList.css">
     <script src="${path}/js/jquery-3.6.0.min.js"></script>
 
 <script>
@@ -32,13 +34,6 @@
 
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 
-<span id="userNickname"></span> 님 환영합니다! <br>
-<br>
-<a href="/chatList">채팅리스트</a>
-<br>
-
-
-<div id="logout"></div>
 
 <br>
 <a href="/allboard">전체</a>
@@ -66,7 +61,7 @@
 </form>
 
 
-<table border="5">
+<table class="type09">
     <tr>
         <th>Category</th>
         <th>Title</th>
@@ -81,6 +76,28 @@
     </tr>
 </c:forEach>
 </table>
+
+
+
+<c:forEach items="${all}" var="product" varStatus="vs">
+
+<div class="content-container">
+
+    <div class="allproduct-container">
+    <div class="product-box-item">
+
+        <div class="product-item-title">
+            <a href="/oneboard/${product.id}">${product.title}</a>
+        </div>
+        <div class="product-item-num" id="productid${vs.index}" style="display:none">${product.id}
+        </div>
+        <div class="product-item-owner close">${product.userid}</div>
+    </div>
+    </div>
+</div>
+
+</c:forEach>
+
 
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
