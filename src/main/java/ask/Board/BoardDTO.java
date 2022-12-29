@@ -19,6 +19,9 @@ public class BoardDTO {
     private String contents;
     private String userid;
     private String category;
+    private String donation;
+    private String askTime;
+    private String createdAt;
 
 
     @Override

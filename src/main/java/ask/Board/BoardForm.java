@@ -16,10 +16,13 @@ public class BoardForm {
     private String contents;
     private String userid;
     private String category;
+    private String donation;
+    private String askTime;
+    private String createdAt;
 
 
     public BoardDTO toEntity() {
-        return new BoardDTO(id, title, contents, userid, category);
+        return new BoardDTO(id, title, contents, userid, category, donation, askTime, createdAt);
     }
 
 

@@ -14,7 +14,8 @@ public interface BoardRepository extends JpaRepository<BoardDTO, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO BOARD (title, contents, userid, category) VALUES (:#{#oneBoard.title}, :#{#oneBoard.contents}, :#{#oneBoard.userid}, :#{#oneBoard.category})", nativeQuery = true)
+    @Query(value = "INSERT INTO BOARD (title, contents, userid, category, donation, askTime) " +
+            "VALUES (:#{#oneBoard.title}, :#{#oneBoard.contents}, :#{#oneBoard.userid}, :#{#oneBoard.category}, :#{#oneBoard.donation}, :#{#oneBoard.askTime})", nativeQuery = true)
     void saveBaord(@Param("oneBoard")BoardDTO oneBoard);
 
     @Query(value = "SELECT * FROM BOARD", nativeQuery = true)
