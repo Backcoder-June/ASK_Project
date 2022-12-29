@@ -20,8 +20,8 @@ public class BoardDTO {
     private String userid;
     private String category;
     private String donation;
-    private String askTime;
-    private String createdAt;
+    private String asktime;
+    private String createdtime;
 
 
     @Override

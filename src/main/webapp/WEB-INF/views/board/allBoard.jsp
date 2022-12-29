@@ -60,32 +60,17 @@
     <button type="submit" class="btn btn-primary">글쓰기</button>
 </form>
 
-<%--
-<table class="type09">
-    <tr>
-        <th>Category</th>
-        <th>Title</th>
-        <th>Writer</th>
-    </tr>
 
-<c:forEach items="${all}" var="each">
-    <tr>
-        <th>${each.category}</th>
-        <th><a href="/oneboard/${each.id}">${each.title}</a></th>
-        <th>${each.userid}</th>
-    </tr>
-</c:forEach>
-</table>--%>
 <div class="pricing-box-container">
 <c:forEach items="${all}" var="each">
 	<div class="pricing-box text-center">
 		<h5>${each.category}</h5>
 		<p class="price"><a href="/oneboard/${each.id}">${each.title}</a></p>
 		<ul class="features-list">
-			<li><strong>도네이션</strong> 필요</li>
-            <li><strong>예상시간</strong> 10분</li>
+			<li><strong>도네이션</strong> ${each.donation}</li>
+            <li><strong>예상시간</strong> ${each.asktime}</li>
             <li><strong>작성자 </strong> ${each.userid}</li>
-            <li>1일전</li>
+            <li>${each.createdtime}</li>
 		</ul>
 		<button id="chatbtn" class="btn-primary">Get Started</button>
 	</div>
