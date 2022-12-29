@@ -27,19 +27,34 @@
 <form class="container" action="/writeboard" method="post">
     <div class="mb-3 mt-3 form-group">
         <label class="form-label">제목</label>
-        <input type="text" class="form-control" name="title">
+        <input type="text" class="form-control" name="title" required>
     </div>
     <div class="mb-3 form-group">
         <label class="form-label">내용</label>
-        <textarea class="form-control" rows="5" name="contents"></textarea>
+        <textarea class="form-control" rows="5" name="contents" required></textarea>
     </div>
     <div class="mb-3 form-group">
         카테고리
-        <select name="category" required>
+        <select name="category" required="required">
             <option>백엔드</option>
             <option>프론트엔드</option>
             <option>DB</option>
             <option>배포</option>
+        </select>
+        <br>
+        도네이션
+        <select name="donation" required>
+            <option>자율도네</option>
+            <option>도네요청</option>
+            <option>지식나눔</option>
+        </select>
+        <br>
+        예상 소요시간
+        <select name="asktime" required>
+            <option>1~15분</option>
+            <option>15~30분</option>
+            <option>30~60분</option>
+            <option>60분 이상</option>
         </select>
     </div>
     <input type="hidden" value="${sessionScope.sessiondto.nickname}" name="userid">

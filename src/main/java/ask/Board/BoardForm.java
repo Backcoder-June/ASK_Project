@@ -17,12 +17,12 @@ public class BoardForm {
     private String userid;
     private String category;
     private String donation;
-    private String askTime;
-    private String createdAt;
+    private String asktime;
+    private String createdat;
 
 
     public BoardDTO toEntity() {
-        return new BoardDTO(id, title, contents, userid, category, donation, askTime, createdAt);
+        return new BoardDTO(id, title, contents, userid, category, donation, asktime, createdat);
     }
 
 

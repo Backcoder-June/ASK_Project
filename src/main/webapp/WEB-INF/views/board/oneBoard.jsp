@@ -33,9 +33,12 @@
     <thead>
     <tr>
         <th scope="col">Category</th>
-        <th scope="col">Writer</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
+        <th scope="col">작성자</th>
+        <th scope="col">제목</th>
+        <th scope="col">내용</th>
+        <th scope="col">도네이션</th>
+        <th scope="col">예상시간</th>
+        <th scope="col"> </th>
     </tr>
     </thead>
     <tbody>
@@ -44,6 +47,9 @@
         <th>${oneBoard.userid}</th>
         <td>${oneBoard.title}</td>
         <td>${oneBoard.contents}</td>
+        <td>${oneBoard.donation}</td>
+        <td>${oneBoard.asktime}</td>
+        <td>${oneBoard.createdtime}</td>
     </tr>
     </tbody>
 </table>

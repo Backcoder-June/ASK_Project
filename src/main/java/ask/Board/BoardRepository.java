@@ -14,11 +14,11 @@ public interface BoardRepository extends JpaRepository<BoardDTO, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO BOARD (title, contents, userid, category, donation, askTime) " +
-            "VALUES (:#{#oneBoard.title}, :#{#oneBoard.contents}, :#{#oneBoard.userid}, :#{#oneBoard.category}, :#{#oneBoard.donation}, :#{#oneBoard.askTime})", nativeQuery = true)
+    @Query(value = "INSERT INTO BOARD (title, contents, userid, category, donation, asktime) " +
+            "VALUES (:#{#oneBoard.title}, :#{#oneBoard.contents}, :#{#oneBoard.userid}, :#{#oneBoard.category}, :#{#oneBoard.donation}, :#{#oneBoard.asktime})", nativeQuery = true)
     void saveBaord(@Param("oneBoard")BoardDTO oneBoard);
 
-    @Query(value = "SELECT * FROM BOARD", nativeQuery = true)
+    @Query(value = "SELECT * FROM BOARD ORDER BY id desc", nativeQuery = true)
     List<BoardDTO> jpafindAll();
 
     @Query(value = "SELECT * FROM BOARD WHERE category= :#{#category}", nativeQuery = true)
@@ -27,7 +27,8 @@ public interface BoardRepository extends JpaRepository<BoardDTO, Long> {
     @Query(value = "SELECT * FROM BOARD WHERE id= :id", nativeQuery = true)
     BoardDTO jpafindOne(Long id);
 
-    @Query(value = "UPDATE BOARD SET title= :#{#target.title}, contents= :#{#target.contents}, category= :#{#target.category} WHERE id= :#{#target.id}", nativeQuery = true)
+    @Query(value = "UPDATE BOARD SET title= :#{#target.title}, contents= :#{#target.contents}, " +
+            "category= :#{#target.category}, donation= :#{#target.donation}, asktime= :#{#target.asktime} WHERE id= :#{#target.id}", nativeQuery = true)
     @Modifying
     @Transactional
     void jpaupdate(@Param("target") BoardDTO boardDTO);
